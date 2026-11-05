@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #f6f2ea;        /* тёплый светлый фон */
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --muted: #7a7266;
+  --accent: #8a3b2e;    /* глубокий красно-коричневый */
+  --line: #e4ddd0;
+  --dark: #1b1e24;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1, h2, h3, .logo { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; }
+h1 { font-size: clamp(36px, 5vw, 60px); line-height: 1.1; margin-bottom: 16px; }
+h2 { font-size: 34px; }
+h3 { font-size: 22px; }
+a { color: inherit; text-decoration: none; }
+p { margin-bottom: 12px; }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+main { min-height: 70vh; padding-bottom: 64px; }
+
+/* ---------- Шапка ---------- */
+#header { background: var(--dark); color: #f3ece0; position: sticky; top: 0; z-index: 10; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.logo { font-size: 30px; letter-spacing: 6px; }
+.nav { display: flex; gap: 32px; }
+.nav a { font-size: 15px; opacity: .75; transition: opacity .2s; }
+.nav a:hover, .nav a.active { opacity: 1; border-bottom: 1px solid #e8c77a; }
+.burger { display: none; background: none; border: 0; color: inherit; font-size: 26px; cursor: pointer; }
+
+/* ---------- Кнопки ---------- */
+.btn {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 14px 28px; border-radius: 40px; border: 0;
+  font: inherit; font-weight: 500; cursor: pointer; transition: transform .2s, opacity .2s;
+}
+.btn:hover { transform: translateY(-2px); opacity: .9; }
+.btn.light { background: transparent; border: 1px solid currentColor; color: inherit; }
+
+/* ---------- Главная ---------- */
+.hero { background: var(--dark); color: #f3ece0; padding: 72px 0 88px; }
+.hero-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.hero .eyebrow { color: #e8c77a; letter-spacing: 3px; text-transform: uppercase; font-size: 13px; margin-bottom: 16px; }
+.hero p { font-size: 18px; opacity: .8; max-width: 480px; margin-bottom: 28px; }
+.hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+#hero-watch { display: flex; justify-content: center; }
+#hero-watch svg { max-width: 100%; height: auto; filter: drop-shadow(0 30px 40px rgba(0,0,0,.45)); }
+
+.section-title { margin: 64px 0 24px; }
+
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+.feature { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+.feature .num { font-family: 'Cormorant Garamond', serif; font-size: 44px; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+
+/* ---------- Карточки ---------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.card {
+  position: relative; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden; transition: transform .25s, box-shadow .25s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,.08); }
+.card-img { background: #efe9de; display: flex; justify-content: center; padding: 24px 0; }
+.card-body { padding: 16px 20px 20px; }
+.card h3 { margin: 4px 0 8px; }
+.price { font-weight: 600; }
+.price.big { font-size: 26px; margin: 8px 0 20px; }
+.badge {
+  position: absolute; top: 12px; left: 12px; background: var(--accent); color: #fff;
+  font-size: 12px; padding: 4px 10px; border-radius: 20px;
+}
+
+/* ---------- Каталог ---------- */
+.page-head { padding: 48px 0 24px; }
+.filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 12px; }
+.filters select, .filters button {
+  font: inherit; padding: 10px 14px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--surface); cursor: pointer;
+}
+#count { margin-bottom: 20px; }
+
+/* ---------- Товар ---------- */
+.back { display: inline-block; margin: 32px 0 16px; color: var(--muted); }
+.product { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.product-img { background: #efe9de; border-radius: var(--radius); display: flex; justify-content: center; padding: 40px; }
+.product-img svg { max-width: 100%; height: auto; }
+.specs { width: 100%; border-collapse: collapse; margin: 20px 0 28px; }
+.specs td { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.specs td:first-child { color: var(--muted); width: 40%; }
+
+/* ---------- О бренде / контакты ---------- */
+.text-block { max-width: 760px; }
+.text-block h2 { margin: 40px 0 12px; }
+.timeline { list-style: none; border-left: 2px solid var(--accent); padding-left: 24px; margin: 24px 0; }
+.timeline li { margin-bottom: 20px; }
+.timeline b { font-family: 'Cormorant Garamond', serif; font-size: 22px; display: block; }
+
+.shops { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 24px; }
+.shop { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+
+.contact-form { display: grid; gap: 12px; max-width: 480px; margin-top: 16px; }
+.contact-form input, .contact-form textarea {
+  font: inherit; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+}
+.form-msg { color: var(--accent); }
+
+/* ---------- Подвал ---------- */
+#footer { background: var(--dark); color: #f3ece0; padding: 40px 0; }
+.footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+#footer .muted { color: #a59c8e; }
+
+/* ---------- Телефон ---------- */
+@media (max-width: 800px) {
+  .burger { display: block; }
+  .nav {
+    display: none; position: absolute; top: 68px; left: 0; right: 0;
+    background: var(--dark); flex-direction: column; gap: 0; padding: 8px 20px 16px;
+  }
+  .nav.open { display: flex; }
+  .nav a { padding: 12px 0; }
+  .hero-inner, .product, .features { grid-template-columns: 1fr; }
+  .hero { padding: 48px 0 56px; }
+  #hero-watch { order: -1; }
+  #hero-watch svg { width: 240px; }
+}
