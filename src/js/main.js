@@ -93,7 +93,7 @@ function renderFooter() {
           Tel: <a href="tel:+375292725156">+375 (29) 272-51-56</a> (МТС)<br>
           Tel: <a href="tel:+375293157526">+375 (29) 315-75-26</a> (А1)
         </p>
-        <p>ПН-ВС: с 10:00 до 20:00</p>
+        <p class="footer-hours">ПН-ВС: с 10:00 до 20:00</p>
         <p><a class="footer-mail" href="mailto:shop@luch.by">shop@luch.by</a></p>
       </div>
     </div>`;

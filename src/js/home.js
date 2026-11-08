@@ -5,7 +5,7 @@ import './main.js';
 // Чтобы добавить слайд, допишите объект в этот массив.
 const slides = [
   { image: 'images/slide-new.jpg', alt: 'Новые коллекции', link: 'catalog.html' },
-  { bg: 'linear-gradient(135deg, #333231, #6c6866 55%, #8ba6a9)', title: 'Брутализм', text: 'Бетон, геометрия, никакого лишнего декора', link: 'catalog.html' },
+  { image: 'images/slide-brutalism.jpg', alt: 'Новая коллекция «Брутализм»', link: 'catalog.html' },
   { bg: 'linear-gradient(135deg, #8db9dc, #bcd4e9 45%, #ccd6d1)', title: 'Эстетика 2000-х', text: 'Хром, глянец и прозрачность', link: 'catalog.html', dark: true },
   { bg: 'linear-gradient(135deg, #3b2a22, #8b1414 50%, #d9935a)', title: 'Китайский стиль', text: 'Символизм, природа и каллиграфия', link: 'catalog.html' },
 ];

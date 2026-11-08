@@ -34,29 +34,41 @@ p { margin-bottom: 12px; }
 main { min-height: 70vh; padding-bottom: 48px; }
 
 /* ---------- Шапка: кнопки-«таблетки» ---------- */
-#header { background: var(--bg); position: sticky; top: 0; z-index: 20; }
+#header {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(251, 250, 250, .55);           /* полупрозрачная шапка */
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
 .header-inner { display: flex; align-items: center; gap: 16px; height: 64px; }
 
 .pill {
   display: inline-flex; align-items: center; gap: 6px;
-  background: var(--surface); color: var(--text);
-  border: 0; border-radius: 10px; box-shadow: var(--pill-shadow);
+  background: rgba(255, 255, 255, .25); color: var(--text);   /* прозрачные кнопки */
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .6); border-radius: 10px; box-shadow: var(--pill-shadow);
   padding: 8px 16px; font: inherit; font-size: 15px; cursor: pointer;
   transition: transform .15s, box-shadow .15s;
 }
 .pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0, 0, 0, .16); }
 .pill .arrow { font-size: 22px; line-height: 1; margin-left: -3px; transition: transform .2s; }
-.dropdown.open .pill .arrow { transform: rotate(180deg); }   /* стрелка переворачивается, когда меню открыто */
+.dropdown.open .pill .arrow,
+.dropdown:hover .pill .arrow { transform: rotate(180deg); }   /* стрелка переворачивается, когда меню открыто */
 
 .nav { display: flex; gap: 16px; align-items: center; }
 
 .dropdown { position: relative; }
 .dropdown-menu {
   display: none; position: absolute; top: calc(100% + 12px); left: 0; min-width: 200px;
-  background: var(--surface); border-radius: 12px; box-shadow: var(--pill-shadow);
+  background: rgba(255, 255, 255, .45); border: 1px solid rgba(255, 255, 255, .6);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px; box-shadow: var(--pill-shadow);
   padding: 12px 20px 14px 36px; list-style: disc; color: #bbb; font-size: 14px;
 }
+/* Меню открывается сразу при наведении курсора (и по нажатию — для телефона) */
+.dropdown:hover .dropdown-menu,
 .dropdown.open .dropdown-menu { display: block; }
+/* невидимый «мостик», чтобы меню не закрывалось, пока ведёшь курсор от кнопки к списку */
+.dropdown-menu::before { content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
 .dropdown-menu li { padding: 2px 0; }
 .dropdown-menu a { color: var(--text); }
 .dropdown-menu a:hover { text-decoration: underline; }
@@ -226,6 +238,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .footer-shop { min-width: 320px; font-size: 20px; line-height: 1.25; }
 .footer-shop h3 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px; margin: 4px 0 12px; }
 .footer-shop p { margin-bottom: 12px; }
+.footer-shop .footer-hours { margin-top: 28px; }   /* ПН-ВС пониже */
 .footer-shop a:hover { text-decoration: underline; }
 
 /* ---------- Планшет и телефон ---------- */
