@@ -58,8 +58,8 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .dropdown { position: relative; }
 .dropdown-menu {
   display: none; position: absolute; top: calc(100% + 12px); left: 0; min-width: 200px;
-  background: rgba(255, 255, 255, .97); border: 1px solid rgba(255, 255, 255, .8);   /* меню почти непрозрачное */
-  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, .55); border: 1px solid rgba(255, 255, 255, .8);   /* меню наполовину прозрачное */
+  backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);   /* сильное размытие — текст под меню не мешает */
   border-radius: 12px; box-shadow: var(--pill-shadow);
   padding: 12px 20px 14px 36px; list-style: disc; color: #bbb; font-size: 14px;
 }
