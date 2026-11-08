@@ -1,4 +1,4 @@
-import { watches, collections, productCard } from './main.js';
+import { watches, collections, productCard, glass } from './main.js';
 
 // ---------- Настройки фильтров ----------
 // key — поле в watches.json, options — галочки. В одной группе работает «ИЛИ», между группами — «И».
@@ -15,7 +15,12 @@ const GROUPS = {
   interior: [
     { key: 'type', title: 'Тип часов', options: ['Будильник', 'Настольные часы'], labels: { 'Будильник': 'Будильники' } },
   ],
-  accessories: [],
+  accessories: [
+    { key: 'width', title: 'Размер (ширина), мм', options: ['18', '20', '22', '24'] },
+    { key: 'type', title: 'Тип изделия', options: ['Браслет', 'Браслет для часов', 'Картхолдер', 'Колье', 'Кольцо', 'Набор платков', 'Обложка для паспорта', 'Платок женский', 'Платок-ремень', 'Ремешок', 'Ролл для часов', 'Серьги'] },
+    { key: 'color', title: 'Цвет', collapsed: true, options: ['Серебристый', 'Золотистый', 'Чёрный', 'Коричневый', 'Бежевый'] },
+    { key: 'material', title: 'Материал', collapsed: true, options: ['Металл', 'Кожа', 'Шёлк', 'Текстиль'] },
+  ],
 };
 const FLAGS = [
   { key: 'isNew', title: 'Новинки' },
@@ -33,11 +38,12 @@ if (collectionSlug) {
 }
 const checked = {};          // { gender: Set(['Мужские']), isNew: true, ... }
 const collapsed = {};        // какие группы свёрнуты
-const PAGE = 24;
-let shown = PAGE;
+const PAGE = 24;              // моделей на одной странице
+let page = 1;
+let sortValue = '';           // '' — популярности, 'new', 'desc', 'asc'
 
 const el = id => document.getElementById(id);
-const fromInput = el('price-from'), toInput = el('price-to'), sortSel = el('sort');
+const fromInput = el('price-from'), toInput = el('price-to');
 const searchInput = document.querySelector('.search input');
 if (searchInput) searchInput.value = query;
 
@@ -61,9 +67,9 @@ function filtered() {
   );
 
   const price = (w, empty) => w.priceByn ?? empty;
-  if (sortSel.value === 'asc') list = [...list].sort((a, b) => price(a, Infinity) - price(b, Infinity));
-  if (sortSel.value === 'desc') list = [...list].sort((a, b) => price(b, -1) - price(a, -1));
-  if (sortSel.value === 'name') list = [...list].sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+  if (sortValue === 'asc') list = [...list].sort((a, b) => price(a, Infinity) - price(b, Infinity));
+  if (sortValue === 'desc') list = [...list].sort((a, b) => price(b, -1) - price(a, -1));
+  if (sortValue === 'new') list = [...list].sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
   return list;
 }
 
@@ -114,14 +120,17 @@ function renderList() {
 
   el('count').textContent = (query ? `Поиск «${query}». ` : '') + `Найдено: ${list.length}`;
 
-  if (tab === 'accessories') {
-    el('catalog-list').innerHTML = '<p class="muted">Ремешки и аксессуары скоро появятся.</p>';
-  } else {
-    el('catalog-list').innerHTML = list.length
-      ? list.slice(0, shown).map(productCard).join('')
-      : '<p class="muted">Ничего не найдено. Попробуйте изменить фильтры.</p>';
-  }
-  el('more').parentElement.style.display = list.length > shown ? '' : 'none';
+  // Страницы по 24 модели
+  const pages = Math.max(1, Math.ceil(list.length / PAGE));
+  page = Math.min(page, pages);
+  el('catalog-list').innerHTML = list.length
+    ? list.slice((page - 1) * PAGE, page * PAGE).map(productCard).join('')
+    : '<p class="muted">Ничего не найдено. Попробуйте изменить фильтры.</p>';
+  el('pager').style.display = list.length > PAGE ? '' : 'none';
+  el('page-num').textContent = page;
+  el('page-num').title = `Страница ${page} из ${pages}`;
+  el('prev').disabled = page === 1;
+  el('next').disabled = page === pages;
 }
 
 function resetPrice() {
@@ -129,7 +138,7 @@ function resetPrice() {
   toInput.value = maxPrice();
 }
 
-function update() { shown = PAGE; renderList(); }
+function update() { page = 1; renderList(); }
 
 // ---------- События ----------
 el('tabs').addEventListener('click', e => {
@@ -168,20 +177,42 @@ el('active-collection').addEventListener('click', e => {
 });
 
 [fromInput, toInput].forEach(i => i.addEventListener('input', update));
-sortSel.addEventListener('change', update);
+
+// ---------- «Сортировать по»: прозрачное окошко, как у меню ----------
+const sortBox = el('sort-dropdown');
+glass(el('sort-menu'));
+function renderSort() {
+  sortBox.querySelectorAll('[data-sort]').forEach(b => b.classList.toggle('current', b.dataset.sort === sortValue));
+}
+el('sort-btn').addEventListener('click', e => { e.stopPropagation(); sortBox.classList.toggle('open'); });
+el('sort-menu').addEventListener('click', e => {
+  const b = e.target.closest('[data-sort]');
+  if (!b) return;
+  sortValue = b.dataset.sort;
+  sortBox.classList.remove('open');
+  renderSort(); update();
+});
+document.addEventListener('click', () => sortBox.classList.remove('open'));
 
 el('reset').addEventListener('click', () => {
   Object.keys(checked).forEach(k => delete checked[k]);
-  sortSel.value = '';
+  sortValue = ''; renderSort();
   resetPrice(); renderFilters(); update();
 });
 
-el('more').addEventListener('click', () => { shown += PAGE; renderList(); });
+// Переключение страниц и прокрутка к началу списка
+function goTo(p) {
+  page = p; renderList();
+  window.scrollTo({ top: el('catalog-list').getBoundingClientRect().top + scrollY - 140, behavior: 'smooth' });
+}
+el('prev').addEventListener('click', () => goTo(page - 1));
+el('next').addEventListener('click', () => goTo(page + 1));
 
 el('filters-toggle').addEventListener('click', () => el('filters').classList.toggle('open'));
 
 // ---------- Старт ----------
 resetPrice();
+renderSort();
 renderTabs();
 renderFilters();
 renderList();

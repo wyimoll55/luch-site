@@ -25,15 +25,15 @@
           <span>До</span>
           <label class="price-input"><input type="number" id="price-to" min="0" step="10" /> <svg class="byn" viewBox="0 0 20 28" aria-label="руб."><path d="M17 3H6v22h5a6 6 0 0 0 0-12H6M1.5 19.5h9" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></label>
         </div>
-        <label class="sort-select">
-          <select id="sort" aria-label="Сортировка">
-            <option value="">Сортировать по</option>
-            <option value="asc">Сначала дешевле</option>
-            <option value="desc">Сначала дороже</option>
-            <option value="name">По названию</option>
-          </select>
-          <span class="sort-arrow">▾</span>
-        </label>
+        <div class="sort-dropdown" id="sort-dropdown">
+          <button class="sort-select" id="sort-btn">Сортировать по <span class="sort-arrow">▾</span></button>
+          <ul class="sort-menu" id="sort-menu">
+            <li><button data-sort="">Популярности</button></li>
+            <li><button data-sort="new">Новинки</button></li>
+            <li><button data-sort="desc">Цена по убыванию</button></li>
+            <li><button data-sort="asc">Цена по возрастанию</button></li>
+          </ul>
+        </div>
       </div>
 
       <div class="catalog-layout">
@@ -49,7 +49,11 @@
           <div class="active-collection" id="active-collection"></div>
           <p class="muted" id="count"></p>
           <div class="pgrid" id="catalog-list"></div>
-          <div class="more-wrap"><button class="reset-btn" id="more">Показать ещё</button></div>
+          <div class="pager" id="pager">
+            <button class="pager-btn" id="prev" aria-label="Предыдущая страница">⟵</button>
+            <span class="pager-num" id="page-num">1</span>
+            <button class="pager-btn" id="next" aria-label="Следующая страница">⟶</button>
+          </div>
         </section>
       </div>
     </div>

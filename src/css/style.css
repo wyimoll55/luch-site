@@ -73,7 +73,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .dropdown-menu a:hover { text-decoration: underline; }
 .dropdown-menu a.current { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }   /* текущая страница — чёрная и подчёркнутая */
 
-.search { margin-left: auto; width: 150px; padding: 8px 12px; cursor: text; }
+.search { width: 150px; padding: 8px 12px; cursor: text; }
 .search input { border: 0; outline: 0; font: inherit; font-size: 15px; width: 100%; background: none; }
 
 .logo img { height: 26px; display: block; }
@@ -239,12 +239,20 @@ main { min-height: 70vh; padding-bottom: 48px; }
 }
 .price-input input { width: 90px; border: 0; outline: 0; font: inherit; text-align: center; background: none; -moz-appearance: textfield; }
 .price-input input::-webkit-outer-spin-button, .price-input input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.sort-select { position: relative; display: flex; align-items: center; min-width: 320px; }
-.sort-select select {
-  appearance: none; -webkit-appearance: none; width: 100%; border: 0; background: none; font: inherit;
-  font-size: 20px; font-weight: 600; text-align: center; text-align-last: center; padding: 14px 40px; cursor: pointer;
+.sort-dropdown { position: relative; }
+.sort-select { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 320px; padding: 14px 40px; font-size: 20px; font-weight: 600; }
+.sort-arrow { font-size: 22px; line-height: 1; transition: transform .2s; }
+.sort-dropdown:hover .sort-arrow, .sort-dropdown.open .sort-arrow { transform: rotate(180deg); }
+/* Окошко сортировки — прозрачное, как меню «Интернет-магазин» */
+.sort-menu {
+  display: none; position: absolute; top: 100%; left: 0; right: 0; margin-top: 10px; z-index: 15;
+  background: rgba(255, 255, 255, .18); border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: 14px; box-shadow: var(--pill-shadow); padding: 12px 20px 14px 40px; list-style: disc; color: var(--text);
 }
-.sort-arrow { position: absolute; right: 58px; pointer-events: none; font-size: 22px; line-height: 1; }   /* стрелка рядом с текстом */
+.sort-menu::before { content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+.sort-dropdown:hover .sort-menu, .sort-dropdown.open .sort-menu { display: block; }
+.sort-menu button { background: none; border: 0; padding: 2px 0; font: inherit; font-size: 17px; cursor: pointer; color: var(--text); text-align: left; }
+.sort-menu button:hover, .sort-menu button.current { text-decoration: underline; text-underline-offset: 3px; }
 
 .catalog-layout { display: grid; grid-template-columns: 270px 1fr; gap: 32px; align-items: start; }
 .filters-toggle { display: none; padding: 12px; font-size: 16px; font-weight: 600; }
@@ -267,8 +275,42 @@ main { min-height: 70vh; padding-bottom: 48px; }
   display: grid; place-items: center; color: #999; font-size: 14px; line-height: 1;
 }
 .reset-btn { width: 100%; margin-top: 16px; padding: 12px; font-size: 18px; font-weight: 500; }
-.more-wrap { display: flex; justify-content: center; margin-top: 24px; }
-.more-wrap .reset-btn { width: auto; padding: 12px 40px; }
+/* Переключатель страниц «← 1 →» */
+.pager { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 40px; }
+.pager-btn {
+  width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--surface);
+  box-shadow: var(--pill-shadow); font-size: 20px; cursor: pointer; transition: transform .15s;
+}
+.pager-btn:hover:not(:disabled) { transform: translateY(-1px); }
+.pager-btn:disabled { opacity: .35; cursor: default; }
+.pager-num { font-size: 30px; font-weight: 700; min-width: 24px; text-align: center; }
+
+/* Значок корзины в шапке */
+.cart-link { position: relative; margin-left: auto; color: var(--text); display: flex; }
+.cart-link:hover { opacity: .7; }
+.cart-count {
+  position: absolute; top: -6px; right: -8px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px;
+  background: #111; color: #fff; font-size: 11px; font-weight: 600; display: grid; place-items: center;
+}
+.cart-count[hidden] { display: none; }
+
+/* Страница корзины */
+.cart-list { display: grid; gap: 14px; max-width: 900px; }
+.cart-item {
+  display: grid; grid-template-columns: 90px 1fr auto 40px; gap: 20px; align-items: center;
+  background: var(--surface); border-radius: 16px; box-shadow: var(--pill-shadow); padding: 12px 16px;
+}
+.cart-thumb { width: 90px; height: 90px; border-radius: 12px; overflow: hidden; background: #e2e2e2; display: grid; place-items: center; }
+.cart-thumb.has-photo { background: #fff; }
+.cart-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.cart-thumb svg { width: 80px; height: 80px; }
+.cart-name { font-size: 18px; font-weight: 500; }
+.cart-name:hover { text-decoration: underline; }
+.cart-price { font-size: 18px; font-weight: 600; white-space: nowrap; }
+.cart-remove { width: 36px; height: 36px; border-radius: 50%; border: 0; background: #f0f0f0; cursor: pointer; }
+.cart-remove:hover { background: #e2e2e2; }
+.cart-total { display: flex; justify-content: space-between; align-items: center; gap: 20px; max-width: 900px; margin-top: 28px; font-size: 22px; flex-wrap: wrap; }
+.cart-empty { padding: 20px 0 40px; font-size: 18px; }
 
 .active-collection .chip {
   display: inline-flex; align-items: center; gap: 8px; background: var(--surface); box-shadow: var(--pill-shadow);
@@ -309,7 +351,8 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
 .product-img.has-photo { padding: 0; overflow: hidden; }
-.product-img.has-photo img { width: 100%; display: block; }
+.product-img.has-photo { aspect-ratio: 1 / 1; }
+.product-img.has-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .btn.light { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1px #111; margin-left: 8px; }
 .collection-card { position: relative; }
 .collection-card .card-img.has-photo { padding: 0; }
@@ -404,9 +447,11 @@ main { min-height: 70vh; padding-bottom: 48px; }
   .tab-btn { font-size: 17px; padding: 10px; }
   .price-range { font-size: 16px; gap: 8px; padding: 8px 12px; }
   .price-input input { width: 64px; }
-  .sort-select { min-width: 0; width: 100%; }
-  .sort-select select { font-size: 17px; }
-  .sort-arrow { right: 24px; }
+  .sort-dropdown { width: 100%; }
+  .sort-select { min-width: 0; width: 100%; font-size: 17px; }
+  .cart-item { grid-template-columns: 64px 1fr 36px; }
+  .cart-thumb { width: 64px; height: 64px; }
+  .cart-price { grid-column: 2; }
   .catalog-layout { grid-template-columns: 1fr; gap: 12px; }
   .filters-toggle { display: block; }
   .filters-panel { display: none; }

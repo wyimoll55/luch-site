@@ -23,11 +23,16 @@ if (!w) {
         <div class="price big">${formatPrice(w.priceByn)}</div>
         <table class="specs">
           ${w.article !== '—' ? `<tr><td>Артикул</td><td>${w.article}</td></tr>` : ''}
+          ${w.category === 'accessories' ? `
+          <tr><td>Тип изделия</td><td>${dash(w.type)}</td></tr>
+          <tr><td>Материал</td><td>${dash(w.material)}</td></tr>
+          <tr><td>Цвет</td><td>${dash(w.color)}</td></tr>
+          ${w.width ? `<tr><td>Ширина</td><td>${w.width} мм</td></tr>` : ''}` : `
           <tr><td>Механизм</td><td>${dash(w.mechanism)}</td></tr>
           <tr><td>Корпус</td><td>${dash(w.case)}</td></tr>
           <tr><td>Стекло</td><td>${dash(w.glass)}</td></tr>
           <tr><td>Водозащита</td><td>${dash(w.water)}</td></tr>
-          <tr><td>Для кого</td><td>${dash(w.gender)}</td></tr>
+          <tr><td>Для кого</td><td>${dash(w.gender)}</td></tr>`}
         </table>
         <button class="btn cart-btn ${getCart().includes(w.id) ? 'in-cart' : ''}" data-id="${w.id}">${getCart().includes(w.id) ? 'В корзине ✓' : 'В корзину'}</button>
         ${w.url ? `<a class="btn light" href="${w.url}" target="_blank" rel="noopener">Смотреть на luch.by</a>` : ''}

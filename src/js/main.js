@@ -18,8 +18,24 @@ const CART_KEY = 'luch-cart';
 export function getCart() {
   try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; }
 }
-function saveCart(ids) {
+export function saveCart(ids) {
   try { localStorage.setItem(CART_KEY, JSON.stringify(ids)); } catch {}
+  updateCartCount();
+}
+
+// Цифра на значке корзины в шапке
+export function updateCartCount() {
+  const badge = document.querySelector('.cart-count');
+  if (!badge) return;
+  const n = getCart().length;
+  badge.textContent = n;
+  badge.hidden = n === 0;
+}
+
+// Размытие фона под прозрачными окошками (задаём из JS — при сборке из CSS оно пропадало)
+export function glass(el) {
+  el.style.backdropFilter = 'blur(20px) saturate(1.2)';
+  el.style.webkitBackdropFilter = 'blur(20px) saturate(1.2)';
 }
 export function toggleCart(id) {
   const cart = getCart();
@@ -81,6 +97,13 @@ function renderHeader() {
         </div>
         ${topMenu.map(p => `<a class="pill" href="${p.href}">${p.label}</a>`).join('')}
       </nav>
+      <a class="cart-link" href="cart.html" aria-label="Корзина">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h3l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/>
+          <circle cx="9.5" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/>
+        </svg>
+        <span class="cart-count" hidden>0</span>
+      </a>
       <form class="search pill" action="catalog.html">
         <input name="q" placeholder="Поиск" aria-label="Поиск" />
         <span aria-hidden="true">⌕</span>
@@ -92,9 +115,7 @@ function renderHeader() {
   const dd = document.querySelector('.dropdown');
 
   // Размытие фона под меню задаём здесь, а не в CSS: при сборке для GitHub оно из CSS пропадало
-  const menu = dd.querySelector('.dropdown-menu');
-  menu.style.backdropFilter = 'blur(20px) saturate(1.2)';
-  menu.style.webkitBackdropFilter = 'blur(20px) saturate(1.2)';
+  glass(dd.querySelector('.dropdown-menu'));
   document.querySelector('#shop-btn').addEventListener('click', e => {
     e.stopPropagation();
     dd.classList.toggle('open');
@@ -217,3 +238,4 @@ export function productCard(w) {
 
 renderHeader();
 renderFooter();
+updateCartCount();
