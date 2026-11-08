@@ -1,14 +1,20 @@
 // Общий код для всех страниц: шапка, подвал, рисование часов, карточка товара
 import '../css/style.css';
 import watches from '../data/watches.json';
+import collections from '../data/collections.json';
 
-export { watches };
+// Данные собраны с официального сайта luch.by (коллекции, артикулы, цены в USD)
+export { watches, collections };
+
+// Цена: «199 USD» или «Цена по запросу», если на сайте её нет
+export const formatPrice = p => (p ? `${p} USD` : 'Цена по запросу');
 
 // ---------- Шапка и подвал ----------
 // Меню как в макете: «Интернет-магазин» с выпадающим списком + отдельные кнопки
 const shopMenu = [
   { href: 'index.html', label: 'Главная' },
   { href: 'catalog.html', label: 'Каталог' },
+  { href: 'collections.html', label: 'Коллекции' },
   { href: '#', label: 'Спецзаказ' },
   { href: 'about.html', label: 'О компании' },
   { href: 'contacts.html', label: 'Контакты' },
@@ -134,14 +140,14 @@ export function watchSVG(w, size = 220) {
 
 // ---------- Карточка в каталоге ----------
 export function productCard(w) {
+  const info = [w.collection, w.mechanism].filter(Boolean).join(' · ');
   return `
     <a class="card" href="product.html?id=${w.id}">
-      ${w.isNew ? '<span class="badge">Новинка</span>' : ''}
       <div class="card-img">${watchSVG(w, 180)}</div>
       <div class="card-body">
-        <div class="muted small">${w.collection} · ${w.mechanism}</div>
+        <div class="muted small">${info}</div>
         <h3>${w.name}</h3>
-        <div class="price">${w.price} BYN</div>
+        <div class="price">${formatPrice(w.price)}</div>
       </div>
     </a>`;
 }

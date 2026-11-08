@@ -10,6 +10,7 @@ export default defineConfig(({ command }) => ({
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
         catalog: resolve(import.meta.dirname, 'catalog.html'),
+        collections: resolve(import.meta.dirname, 'collections.html'),
         product: resolve(import.meta.dirname, 'product.html'),
         about: resolve(import.meta.dirname, 'about.html'),
         contacts: resolve(import.meta.dirname, 'contacts.html'),

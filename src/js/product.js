@@ -1,9 +1,10 @@
-import { watches, watchSVG, productCard } from './main.js';
+import { watches, watchSVG, productCard, formatPrice } from './main.js';
 
-// Берём id из адреса: product.html?id=3
-const id = Number(new URLSearchParams(location.search).get('id'));
+// Берём id (артикул) из адреса: product.html?id=97460638
+const id = new URLSearchParams(location.search).get('id');
 const w = watches.find(x => x.id === id);
 const root = document.querySelector('#product');
+const dash = v => v || '—';
 
 if (!w) {
   root.innerHTML = `
@@ -13,36 +14,30 @@ if (!w) {
   document.title = `${w.name} — Луч`;
 
   root.innerHTML = `
-    <a href="catalog.html" class="back">← Каталог</a>
+    <a href="catalog.html?collection=${w.collectionSlug}" class="back">← ${w.collection}</a>
     <div class="product">
       <div class="product-img">${watchSVG(w, 380)}</div>
       <div class="product-info">
-        <div class="muted">${w.collection}</div>
+        <a class="muted" href="catalog.html?collection=${w.collectionSlug}">Коллекция ${w.collection}</a>
         <h1>${w.name}</h1>
-        <div class="price big">${w.price} BYN</div>
-        <p>${w.description}</p>
+        <div class="price big">${formatPrice(w.price)}</div>
         <table class="specs">
-          <tr><td>Механизм</td><td>${w.mechanism}</td></tr>
-          <tr><td>Корпус</td><td>${w.case}</td></tr>
-          <tr><td>Стекло</td><td>${w.glass}</td></tr>
-          <tr><td>Водозащита</td><td>${w.water}</td></tr>
-          <tr><td>Ремешок</td><td>${w.strap}</td></tr>
-          <tr><td>Для кого</td><td>${w.gender}</td></tr>
+          <tr><td>Артикул</td><td>${w.article}</td></tr>
+          <tr><td>Механизм</td><td>${dash(w.mechanism)}</td></tr>
+          <tr><td>Корпус</td><td>${dash(w.case)}</td></tr>
+          <tr><td>Стекло</td><td>${dash(w.glass)}</td></tr>
+          <tr><td>Водозащита</td><td>${dash(w.water)}</td></tr>
+          <tr><td>Для кого</td><td>${dash(w.gender)}</td></tr>
         </table>
-        <button class="btn" id="buy">Где купить</button>
-        <p class="muted small" id="buy-msg"></p>
+        <a class="btn" href="${w.url}" target="_blank" rel="noopener">Смотреть на luch.by</a>
+        <p class="muted small" style="margin-top:12px">Адреса магазинов — на странице <a href="contacts.html">«Контакты»</a>.</p>
       </div>
     </div>
     <h2 class="section-title">Из той же коллекции</h2>
     <div class="grid" id="similar"></div>`;
 
-  document.querySelector('#buy').addEventListener('click', () => {
-    document.querySelector('#buy-msg').textContent =
-      'Адреса магазинов — на странице «Контакты».';
-  });
-
-  const similar = watches.filter(x => x.collection === w.collection && x.id !== w.id);
+  const similar = watches.filter(x => x.collectionSlug === w.collectionSlug && x.id !== w.id);
   document.querySelector('#similar').innerHTML = similar.length
     ? similar.map(productCard).join('')
-    : '<p class="muted">Других моделей в коллекции пока нет.</p>';
+    : '<p class="muted">Других моделей в коллекции нет.</p>';
 }

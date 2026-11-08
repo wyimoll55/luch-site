@@ -58,8 +58,8 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .dropdown { position: relative; }
 .dropdown-menu {
   display: none; position: absolute; top: calc(100% + 12px); left: 0; min-width: 200px;
-  background: rgba(255, 255, 255, .45); border: 1px solid rgba(255, 255, 255, .6);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, .97); border: 1px solid rgba(255, 255, 255, .8);   /* меню почти непрозрачное */
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
   border-radius: 12px; box-shadow: var(--pill-shadow);
   padding: 12px 20px 14px 36px; list-style: disc; color: #bbb; font-size: 14px;
 }
@@ -198,6 +198,21 @@ main { min-height: 70vh; padding-bottom: 48px; }
   border: 0; background: var(--surface); box-shadow: var(--pill-shadow); cursor: pointer;
 }
 #count { margin-bottom: 20px; }
+
+/* ---------- Все коллекции ---------- */
+.collections-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+.collection-card {
+  display: flex; flex-direction: column; background: var(--surface); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--pill-shadow); transition: transform .25s, box-shadow .25s;
+}
+.collection-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0, 0, 0, .1); }
+.collection-card .card-body { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.collection-card h3 { margin: 0; }
+.collection-card p { margin: 4px 0 8px; color: #444; }
+.collection-meta { margin-top: auto; display: flex; justify-content: space-between; font-size: 14px; }
+.collection-about { max-width: 760px; margin: 8px 0 12px; }
+.collection-about h2 { margin-bottom: 6px; }
+.collection-about p { margin-bottom: 4px; }
 
 /* ---------- Товар ---------- */
 .back { display: inline-block; margin: 24px 0 16px; color: var(--muted); }
