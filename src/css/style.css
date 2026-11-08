@@ -76,7 +76,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .search { margin-left: auto; width: 150px; padding: 8px 12px; cursor: text; }
 .search input { border: 0; outline: 0; font: inherit; font-size: 15px; width: 100%; background: none; }
 
-.logo img { height: 54px; display: block; }
+.logo img { height: 46px; display: block; }
 .burger { display: none; font-size: 20px; padding: 6px 12px; }
 
 /* ---------- Главная ---------- */
@@ -238,7 +238,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .footer-shop { min-width: 320px; font-size: 20px; line-height: 1.25; }
 .footer-shop h3 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px; margin: 4px 0 12px; }
 .footer-shop p { margin-bottom: 12px; }
-.footer-shop .footer-hours { margin-top: 28px; }   /* ПН-ВС пониже */
+.footer-shop .footer-hours { margin-top: 40px; margin-bottom: 4px; }   /* ПН-ВС пониже, ближе к почте */
 .footer-shop a:hover { text-decoration: underline; }
 
 /* ---------- Планшет и телефон ---------- */
