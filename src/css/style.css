@@ -76,7 +76,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .search { margin-left: auto; width: 150px; padding: 8px 12px; cursor: text; }
 .search input { border: 0; outline: 0; font: inherit; font-size: 15px; width: 100%; background: none; }
 
-.logo img { height: 30px; display: block; }
+.logo img { height: 26px; display: block; }
 .burger { display: none; font-size: 20px; padding: 6px 12px; }
 
 /* ---------- Главная ---------- */
@@ -258,7 +258,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
   .nav.open { display: flex; }
   .dropdown-menu { position: static; margin-top: 8px; }
   .search { width: 120px; }
-  .logo img { height: 26px; }
+  .logo img { height: 22px; }
 
   .hero { grid-template-columns: 1fr; gap: 0; }
   .hero-left { display: flex; justify-content: center; order: 2; }
