@@ -6,6 +6,7 @@ import { defineConfig } from 'vite';
 export default defineConfig(({ command }) => ({
   base: command === 'build' ? '/luch-site/' : '/',
   build: {
+    cssMinify: false,   // не сжимаем CSS, чтобы сборка не выкидывала свойства вроде backdrop-filter
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),

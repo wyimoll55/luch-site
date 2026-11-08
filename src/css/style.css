@@ -71,7 +71,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .dropdown-menu li { padding: 2px 0; }
 .dropdown-menu a { color: var(--text); }
 .dropdown-menu a:hover { text-decoration: underline; }
-.dropdown-menu a.current { color: #bdbdbd; }   /* текущая страница серая, как в макете */
+.dropdown-menu a.current { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }   /* текущая страница — чёрная и подчёркнутая */
 
 .search { margin-left: auto; width: 150px; padding: 8px 12px; cursor: text; }
 .search input { border: 0; outline: 0; font: inherit; font-size: 15px; width: 100%; background: none; }
@@ -244,7 +244,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
   appearance: none; -webkit-appearance: none; width: 100%; border: 0; background: none; font: inherit;
   font-size: 20px; font-weight: 600; text-align: center; text-align-last: center; padding: 14px 40px; cursor: pointer;
 }
-.sort-arrow { position: absolute; right: 50px; pointer-events: none; font-size: 22px; line-height: 1; }   /* стрелка рядом с текстом */
+.sort-arrow { position: absolute; right: 58px; pointer-events: none; font-size: 22px; line-height: 1; }   /* стрелка рядом с текстом */
 
 .catalog-layout { display: grid; grid-template-columns: 270px 1fr; gap: 32px; align-items: start; }
 .filters-toggle { display: none; padding: 12px; font-size: 16px; font-weight: 600; }

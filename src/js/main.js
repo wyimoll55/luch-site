@@ -90,6 +90,11 @@ function renderHeader() {
 
   // Выпадающее меню
   const dd = document.querySelector('.dropdown');
+
+  // Размытие фона под меню задаём здесь, а не в CSS: при сборке для GitHub оно из CSS пропадало
+  const menu = dd.querySelector('.dropdown-menu');
+  menu.style.backdropFilter = 'blur(20px) saturate(1.2)';
+  menu.style.webkitBackdropFilter = 'blur(20px) saturate(1.2)';
   document.querySelector('#shop-btn').addEventListener('click', e => {
     e.stopPropagation();
     dd.classList.toggle('open');
