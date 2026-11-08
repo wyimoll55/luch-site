@@ -5,41 +5,96 @@ import watches from '../data/watches.json';
 export { watches };
 
 // ---------- Шапка и подвал ----------
-const pages = [
+// Меню как в макете: «Интернет-магазин» с выпадающим списком + отдельные кнопки
+const shopMenu = [
   { href: 'index.html', label: 'Главная' },
   { href: 'catalog.html', label: 'Каталог' },
-  { href: 'about.html', label: 'О бренде' },
+  { href: '#', label: 'Спецзаказ' },
+  { href: 'about.html', label: 'О компании' },
   { href: 'contacts.html', label: 'Контакты' },
+];
+const topMenu = [
+  { href: '#', label: 'Оплата и доставка' },
+  { href: '#', label: 'Новости и акции' },
+  { href: '#', label: 'Музей' },
 ];
 
 function renderHeader() {
   const current = location.pathname.split('/').pop() || 'index.html';
-  const links = pages
-    .map(p => `<a href="${p.href}" class="${p.href === current ? 'active' : ''}">${p.label}</a>`)
+  const dropdown = shopMenu
+    .map(p => `<li><a href="${p.href}" class="${p.href === current ? 'current' : ''}">${p.label}</a></li>`)
     .join('');
 
   document.querySelector('#header').innerHTML = `
     <div class="container header-inner">
-      <a href="index.html" class="logo">ЛУЧ</a>
-      <button class="burger" aria-label="Меню">☰</button>
-      <nav class="nav">${links}</nav>
+      <button class="burger pill" aria-label="Меню">☰</button>
+      <nav class="nav">
+        <div class="dropdown">
+          <button class="pill" id="shop-btn">Интернет-магазин <span class="arrow">▾</span></button>
+          <ul class="dropdown-menu">${dropdown}</ul>
+        </div>
+        ${topMenu.map(p => `<a class="pill" href="${p.href}">${p.label}</a>`).join('')}
+      </nav>
+      <form class="search pill" action="catalog.html">
+        <input name="q" placeholder="Поиск" aria-label="Поиск" />
+        <span aria-hidden="true">⌕</span>
+      </form>
+      <a href="index.html" class="logo"><img src="images/logo.svg" alt="Луч" /></a>
     </div>`;
 
+  // Выпадающее меню
+  const dd = document.querySelector('.dropdown');
+  document.querySelector('#shop-btn').addEventListener('click', e => {
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+  document.addEventListener('click', () => dd.classList.remove('open'));
+
   // Мобильное меню
-  const burger = document.querySelector('.burger');
-  const nav = document.querySelector('.nav');
-  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  document.querySelector('.burger').addEventListener('click', () =>
+    document.querySelector('.nav').classList.toggle('open'));
 }
 
 function renderFooter() {
   document.querySelector('#footer').innerHTML = `
     <div class="container footer-inner">
-      <div>
-        <div class="logo">ЛУЧ</div>
-        <p class="muted">Учебный проект. Не является официальным сайтом бренда.</p>
+      <div class="footer-legal">
+        <p class="footer-company">ОАО "Минский часовой завод"</p>
+        <p>
+          220043, г. Минск, пр. Независимости, 95; УНП 100230391<br>
+          Свидетельство о государственной регистрации ОАО "Минский часовой завод" №100230391<br>
+          от 24 марта 2016, выданное Минским горисполкомом.<br>
+          Регистрационный номер интернет-магазина luch.by в торговом реестре РБ №157658<br>
+          от 06.04.2016, выдан Администрацией Первомайского района.
+        </p>
+        <p class="footer-policies">
+          <a href="#">Политика конфиденциальности</a> |
+          <a href="#">Политика в отношении обработки cookies</a> |<br>
+          <a href="#">Политика видеонаблюдения</a> |
+          <a href="#">Порядок подачи покупателем обращений</a>
+        </p>
+        <p class="footer-note">
+          По вопросам защиты прав потребителей можно обратиться в администрацию Первомайского района г.Минска<br>
+          по адресу: г.Минск, пер. К. Чорного, 5.
+        </p>
+        <p class="footer-note">
+          Номер контактного телефона, адрес электронной почты лица, уполномоченного продавцом рассматривать обращения<br>
+          покупателей о нарушении их прав, предусмотренных законодательством о защите<br>
+          прав потребителей: <a href="tel:+375447033645">+375 44 703-36-45</a>, <a href="mailto:shop@luch.by">shop@luch.by</a>.
+        </p>
+        <p class="footer-copy">© 2013 — ${new Date().getFullYear()} ОАО "Минский часовой завод". Все права защищены</p>
+        <p class="footer-copy muted">Учебный проект команды «Солнечные», БГУИР</p>
       </div>
-      <div class="footer-links">
-        ${pages.map(p => `<a href="${p.href}">${p.label}</a>`).join('')}
+
+      <div class="footer-shop">
+        <h3>Интернет магазин:</h3>
+        <p>
+          Tel: <a href="tel:7187">7187</a><br>
+          Tel: <a href="tel:+375292725156">+375 (29) 272-51-56</a> (МТС)<br>
+          Tel: <a href="tel:+375293157526">+375 (29) 315-75-26</a> (А1)
+        </p>
+        <p>ПН-ВС: с 10:00 до 20:00</p>
+        <p><a class="footer-mail" href="mailto:shop@luch.by">shop@luch.by</a></p>
       </div>
     </div>`;
 }

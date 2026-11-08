@@ -1,8 +1,10 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
-// Несколько страниц, чтобы npm run build собирал их все
-export default defineConfig({
+// base нужен для GitHub Pages: сайт живёт по адресу wyimoll55.github.io/luch-site/
+// Локально (npm run dev) всё работает как раньше, на localhost:5173
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/luch-site/' : '/',
   build: {
     rollupOptions: {
       input: {
@@ -14,4 +16,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
