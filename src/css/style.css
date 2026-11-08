@@ -36,7 +36,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
 /* ---------- Шапка: кнопки-«таблетки» ---------- */
 #header {
   position: sticky; top: 0; z-index: 20;
-  background: transparent;   /* полосы нет — видны только кнопки */
+  background: var(--bg);   /* сплошная белая полоса шапки, как раньше */
 }
 .header-inner { display: flex; align-items: center; gap: 16px; height: 64px; }
 
