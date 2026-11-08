@@ -1,12 +1,36 @@
 [
  {
+  "slug": "brutalizm",
+  "name": "Брутализм",
+  "about": "Новая коллекция команды «Солнечные»: бетон, геометрия и монолитность в стальных корпусах.",
+  "gender": "Унисекс",
+  "mechanism": "Кварц",
+  "count": 3,
+  "priceFrom": 685,
+  "url": null,
+  "preview": "brut-zatmenie",
+  "isNew": true
+ },
+ {
+  "slug": "cvetnye-budilniki",
+  "name": "Цветные будильники",
+  "about": "Яркие будильники с росчерком «Луча» на циферблате.",
+  "gender": null,
+  "mechanism": null,
+  "count": 3,
+  "priceFrom": 49,
+  "url": null,
+  "preview": "alarm-mint",
+  "isNew": true
+ },
+ {
   "slug": "1801",
   "name": "1801",
   "about": "Женская коллекция с дизайном, вдохновлённым часами «Луч 1809», и проверенными часовыми технологиями.",
   "gender": "Женские",
   "mechanism": null,
   "count": 5,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/1801/",
   "preview": "97460638"
  },
@@ -17,7 +41,7 @@
   "gender": "Унисекс",
   "mechanism": "Кварц",
   "count": 8,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/80-s/",
   "preview": "740247583"
  },
@@ -28,7 +52,7 @@
   "gender": "Унисекс",
   "mechanism": "Механика",
   "count": 4,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/adventure/",
   "preview": "731959996"
  },
@@ -39,7 +63,7 @@
   "gender": "Мужские",
   "mechanism": null,
   "count": 2,
-  "priceFrom": 339,
+  "priceFrom": 1014,
   "url": "https://luch.by/kollektsii/amphibian/",
   "preview": "76720563"
  },
@@ -61,7 +85,7 @@
   "gender": "Мужские",
   "mechanism": "Кварц",
   "count": 3,
-  "priceFrom": 409,
+  "priceFrom": 1224,
   "url": "https://luch.by/kollektsii/aviator/",
   "preview": "740280598"
  },
@@ -72,7 +96,7 @@
   "gender": "Унисекс",
   "mechanism": null,
   "count": 9,
-  "priceFrom": 139,
+  "priceFrom": 416,
   "url": "https://luch.by/kollektsii/basic/",
   "preview": "78447390"
  },
@@ -83,7 +107,7 @@
   "gender": "Унисекс",
   "mechanism": "Кварц",
   "count": 3,
-  "priceFrom": 169,
+  "priceFrom": 506,
   "url": "https://luch.by/kollektsii/blackout2/",
   "preview": "778449725"
  },
@@ -94,7 +118,7 @@
   "gender": "Унисекс",
   "mechanism": "Кварц",
   "count": 10,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/casual/",
   "preview": "71657544"
  },
@@ -105,7 +129,7 @@
   "gender": "Женские",
   "mechanism": null,
   "count": 4,
-  "priceFrom": 309,
+  "priceFrom": 925,
   "url": "https://luch.by/kollektsii/charme/",
   "preview": "740577721"
  },
@@ -116,7 +140,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 3,
-  "priceFrom": 279,
+  "priceFrom": 835,
   "url": "https://luch.by/kollektsii/classic/",
   "preview": "76730569"
  },
@@ -127,7 +151,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 2,
-  "priceFrom": 349,
+  "priceFrom": 1044,
   "url": "https://luch.by/kollektsii/commander/",
   "preview": "76760565"
  },
@@ -138,7 +162,7 @@
   "gender": "Мужские",
   "mechanism": "Механика",
   "count": 5,
-  "priceFrom": 209,
+  "priceFrom": 625,
   "url": "https://luch.by/kollektsii/defender/",
   "preview": "77430552"
  },
@@ -149,7 +173,7 @@
   "gender": "Женские",
   "mechanism": "Кварц",
   "count": 5,
-  "priceFrom": 319,
+  "priceFrom": 954,
   "url": "https://luch.by/kollektsii/diana/",
   "preview": "740440703"
  },
@@ -160,7 +184,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 2,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/dot/",
   "preview": "78447326"
  },
@@ -171,7 +195,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 8,
-  "priceFrom": 189,
+  "priceFrom": 566,
   "url": "https://luch.by/kollektsii/elegance/",
   "preview": "378378674"
  },
@@ -182,7 +206,7 @@
   "gender": "Мужские",
   "mechanism": null,
   "count": 2,
-  "priceFrom": 309,
+  "priceFrom": 925,
   "url": "https://luch.by/kollektsii/formal-2-0/",
   "preview": "98420801"
  },
@@ -193,7 +217,7 @@
   "gender": "Женские",
   "mechanism": null,
   "count": 7,
-  "priceFrom": 159,
+  "priceFrom": 476,
   "url": "https://luch.by/kollektsii/light-style-2-0/",
   "preview": "72080755"
  },
@@ -204,7 +228,7 @@
   "gender": null,
   "mechanism": null,
   "count": 6,
-  "priceFrom": 269,
+  "priceFrom": 805,
   "url": "https://luch.by/kollektsii/metallic-2-0/",
   "preview": "940417670"
  },
@@ -215,7 +239,7 @@
   "gender": "Унисекс",
   "mechanism": null,
   "count": 2,
-  "priceFrom": 206,
+  "priceFrom": 616,
   "url": "https://luch.by/kollektsii/mustart-zatmenie/",
   "preview": "78567477"
  },
@@ -226,7 +250,7 @@
   "gender": "Женские",
   "mechanism": null,
   "count": 6,
-  "priceFrom": 159,
+  "priceFrom": 476,
   "url": "https://luch.by/kollektsii/nyud-2-0/",
   "preview": "98977482"
  },
@@ -237,7 +261,7 @@
   "gender": "Унисекс",
   "mechanism": "Механика",
   "count": 4,
-  "priceFrom": 979,
+  "priceFrom": 2929,
   "url": "https://luch.by/kollektsii/orion/",
   "preview": "740567717"
  },
@@ -248,7 +272,7 @@
   "gender": "Женские",
   "mechanism": "Кварц",
   "count": 3,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/persona/",
   "preview": "98680485"
  },
@@ -259,7 +283,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 5,
-  "priceFrom": 189,
+  "priceFrom": 566,
   "url": "https://luch.by/kollektsii/pulse/",
   "preview": "98450204"
  },
@@ -270,7 +294,7 @@
   "gender": "Мужские",
   "mechanism": null,
   "count": 2,
-  "priceFrom": 469,
+  "priceFrom": 1403,
   "url": "https://luch.by/kollektsii/revolve-2/",
   "preview": "940580227"
  },
@@ -281,7 +305,7 @@
   "gender": "Женские",
   "mechanism": "Кварц",
   "count": 5,
-  "priceFrom": 179,
+  "priceFrom": 536,
   "url": "https://luch.by/kollektsii/shine/",
   "preview": "78377663"
  },
@@ -292,7 +316,7 @@
   "gender": "Унисекс",
   "mechanism": null,
   "count": 3,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/simple2/",
   "preview": "71951924"
  },
@@ -303,7 +327,7 @@
   "gender": null,
   "mechanism": "Механика",
   "count": 1,
-  "priceFrom": 459,
+  "priceFrom": 1373,
   "url": "https://luch.by/kollektsii/skeleton/",
   "preview": "337060337"
  },
@@ -314,7 +338,7 @@
   "gender": null,
   "mechanism": "Механика",
   "count": 1,
-  "priceFrom": 589,
+  "priceFrom": 1762,
   "url": "https://luch.by/kollektsii/speed/",
   "preview": "77490693"
  },
@@ -325,7 +349,7 @@
   "gender": null,
   "mechanism": null,
   "count": 5,
-  "priceFrom": 209,
+  "priceFrom": 625,
   "url": "https://luch.by/kollektsii/spirit/",
   "preview": "78440389"
  },
@@ -336,7 +360,7 @@
   "gender": "Женские",
   "mechanism": null,
   "count": 4,
-  "priceFrom": 169,
+  "priceFrom": 506,
   "url": "https://luch.by/kollektsii/temper/",
   "preview": "78550504"
  },
@@ -347,7 +371,7 @@
   "gender": null,
   "mechanism": "Механика",
   "count": 3,
-  "priceFrom": 569,
+  "priceFrom": 1703,
   "url": "https://luch.by/kollektsii/twist/",
   "preview": "77497732"
  },
@@ -358,7 +382,7 @@
   "gender": null,
   "mechanism": "Механика",
   "count": 2,
-  "priceFrom": 1279,
+  "priceFrom": 3827,
   "url": "https://luch.by/kollektsii/avalon/",
   "preview": "77157450"
  },
@@ -369,7 +393,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 1,
-  "priceFrom": 339,
+  "priceFrom": 1014,
   "url": "https://luch.by/kollektsii/asoba-vladimir-mulyavin/",
   "preview": "76730560"
  },
@@ -380,7 +404,7 @@
   "gender": "Мужские",
   "mechanism": "Механика",
   "count": 6,
-  "priceFrom": 569,
+  "priceFrom": 1703,
   "url": "https://luch.by/kollektsii/bolshoy-odnostrelochnik/",
   "preview": "77490691"
  },
@@ -391,7 +415,7 @@
   "gender": "Унисекс",
   "mechanism": "Механика",
   "count": 12,
-  "priceFrom": 19,
+  "priceFrom": 57,
   "url": "https://luch.by/kollektsii/budilniki/",
   "preview": "2687660"
  },
@@ -402,7 +426,7 @@
   "gender": "Мужские",
   "mechanism": "Механика",
   "count": 2,
-  "priceFrom": 499,
+  "priceFrom": 1493,
   "url": "https://luch.by/kollektsii/vandrounik/",
   "preview": "877520682"
  },
@@ -413,7 +437,7 @@
   "gender": null,
   "mechanism": "Механика",
   "count": 1,
-  "priceFrom": 839,
+  "priceFrom": 2510,
   "url": "https://luch.by/kollektsii/damasskaya-stal/",
   "preview": "77490694"
  },
@@ -424,7 +448,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 10,
-  "priceFrom": 149,
+  "priceFrom": 446,
   "url": "https://luch.by/kollektsii/dra-lyanaya-2-0/",
   "preview": "440170557"
  },
@@ -435,7 +459,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 3,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/dreva-kvadrat/",
   "preview": "440450684"
  },
@@ -446,7 +470,7 @@
   "gender": "Унисекс",
   "mechanism": null,
   "count": 6,
-  "priceFrom": 259,
+  "priceFrom": 775,
   "url": "https://luch.by/kollektsii/duet/",
   "preview": "740500695"
  },
@@ -457,7 +481,7 @@
   "gender": "Женские",
   "mechanism": "Механика",
   "count": 3,
-  "priceFrom": 269,
+  "priceFrom": 805,
   "url": "https://luch.by/kollektsii/zarya/",
   "preview": "940537698"
  },
@@ -468,7 +492,7 @@
   "gender": null,
   "mechanism": null,
   "count": 4,
-  "priceFrom": 249,
+  "priceFrom": 745,
   "url": "https://luch.by/kollektsii/keramika-den-noch/",
   "preview": "940477688"
  },
@@ -479,7 +503,7 @@
   "gender": "Унисекс",
   "mechanism": "Кварц",
   "count": 6,
-  "priceFrom": 26,
+  "priceFrom": 78,
   "url": "https://luch.by/kollektsii/kiberderevnya/",
   "preview": "78457262"
  },
@@ -490,7 +514,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 6,
-  "priceFrom": 229,
+  "priceFrom": 685,
   "url": "https://luch.by/kollektsii/minskie/",
   "preview": "78300248"
  },
@@ -501,7 +525,7 @@
   "gender": null,
   "mechanism": null,
   "count": 5,
-  "priceFrom": 169,
+  "priceFrom": 506,
   "url": "https://luch.by/kollektsii/mirage/",
   "preview": "75230285"
  },
@@ -523,7 +547,7 @@
   "gender": "Унисекс",
   "mechanism": null,
   "count": 5,
-  "priceFrom": 26,
+  "priceFrom": 78,
   "url": "https://luch.by/kollektsii/novogodnie-budilniki/",
   "preview": "2687701"
  },
@@ -534,7 +558,7 @@
   "gender": null,
   "mechanism": "Кварц",
   "count": 4,
-  "priceFrom": 159,
+  "priceFrom": 476,
   "url": "https://luch.by/kollektsii/obratnyy-khod-2-0/",
   "preview": "72080607"
  },
@@ -545,7 +569,7 @@
   "gender": null,
   "mechanism": "Механика",
   "count": 12,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/odnostrelochnik/",
   "preview": "71957546"
  },
@@ -556,7 +580,7 @@
   "gender": "Унисекс",
   "mechanism": "Кварц",
   "count": 5,
-  "priceFrom": 169,
+  "priceFrom": 506,
   "url": "https://luch.by/kollektsii/odnostrelochnik-kvarts/",
   "preview": "78450216"
  },
@@ -567,7 +591,7 @@
   "gender": null,
   "mechanism": "Механика",
   "count": 5,
-  "priceFrom": 229,
+  "priceFrom": 685,
   "url": "https://luch.by/kollektsii/odnostrelochnik-lyuki/",
   "preview": "71950971"
  },
@@ -578,7 +602,7 @@
   "gender": null,
   "mechanism": null,
   "count": 7,
-  "priceFrom": 179,
+  "priceFrom": 536,
   "url": "https://luch.by/kollektsii/raspisnye-uzory-/",
   "preview": "71657517"
  },
@@ -589,7 +613,7 @@
   "gender": "Унисекс",
   "mechanism": "Кварц",
   "count": 12,
-  "priceFrom": 159,
+  "priceFrom": 476,
   "url": "https://luch.by/kollektsii/retro/",
   "preview": "78567582"
  },
@@ -600,7 +624,7 @@
   "gender": "Мужские",
   "mechanism": "Механика",
   "count": 9,
-  "priceFrom": 349,
+  "priceFrom": 1044,
   "url": "https://luch.by/kollektsii/retro-mekhanika/",
   "preview": "77397265"
  },
@@ -611,7 +635,7 @@
   "gender": "Мужские",
   "mechanism": "Механика",
   "count": 8,
-  "priceFrom": 979,
+  "priceFrom": 2929,
   "url": "https://luch.by/kollektsii/sirius/",
   "preview": "740278725"
  },
@@ -622,7 +646,7 @@
   "gender": "Женские",
   "mechanism": "Механика",
   "count": 5,
-  "priceFrom": 899,
+  "priceFrom": 2690,
   "url": "https://luch.by/kollektsii/sirius-zhenskiy/",
   "preview": "740350641"
  },
@@ -633,7 +657,7 @@
   "gender": null,
   "mechanism": null,
   "count": 5,
-  "priceFrom": 199,
+  "priceFrom": 595,
   "url": "https://luch.by/kollektsii/slutskiya-payasy/",
   "preview": "35487945"
  },
@@ -644,7 +668,7 @@
   "gender": "Мужские",
   "mechanism": "Кварц",
   "count": 4,
-  "priceFrom": 669,
+  "priceFrom": 2002,
   "url": "https://luch.by/kollektsii/stillgir/",
   "preview": "940367713"
  },
@@ -655,7 +679,7 @@
   "gender": "Унисекс",
   "mechanism": null,
   "count": 2,
-  "priceFrom": 279,
+  "priceFrom": 835,
   "url": "https://luch.by/kollektsii/uskhod/",
   "preview": "777099491"
  },
@@ -666,7 +690,7 @@
   "gender": "Женские",
   "mechanism": "Механика",
   "count": 4,
-  "priceFrom": 349,
+  "priceFrom": 1044,
   "url": "https://luch.by/kollektsii/feniks-3-0-zhenskiy/",
   "preview": "929990661"
  },
@@ -677,7 +701,7 @@
   "gender": "Мужские",
   "mechanism": "Механика",
   "count": 5,
-  "priceFrom": 409,
+  "priceFrom": 1224,
   "url": "https://luch.by/kollektsii/feniks-3-0/",
   "preview": "929530645"
  },
@@ -688,7 +712,7 @@
   "gender": null,
   "mechanism": "Механика",
   "count": 6,
-  "priceFrom": 349,
+  "priceFrom": 1044,
   "url": "https://luch.by/kollektsii/feniks-4-0/",
   "preview": "740400666"
  },
@@ -699,7 +723,7 @@
   "gender": null,
   "mechanism": "Механика",
   "count": 5,
-  "priceFrom": 449,
+  "priceFrom": 1343,
   "url": "https://luch.by/kollektsii/feniks-kamni/",
   "preview": "929530707"
  },
@@ -710,7 +734,7 @@
   "gender": "Мужские",
   "mechanism": null,
   "count": 5,
-  "priceFrom": 409,
+  "priceFrom": 1224,
   "url": "https://luch.by/kollektsii/ego2/",
   "preview": "37800335"
  },
@@ -721,7 +745,7 @@
   "gender": "Женские",
   "mechanism": null,
   "count": 4,
-  "priceFrom": 229,
+  "priceFrom": 685,
   "url": "https://luch.by/kollektsii/echo/",
   "preview": "940547702"
  }

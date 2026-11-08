@@ -1,4 +1,4 @@
-import { watches, collections, watchSVG } from './main.js';
+import { watches, collections, productImage, formatPrice } from './main.js';
 
 // Все коллекции завода — карточка ведёт в каталог с фильтром по коллекции
 const box = document.querySelector('#collections-list');
@@ -10,14 +10,15 @@ box.innerHTML = collections.map(c => {
   const tags = [c.gender, c.mechanism].filter(Boolean).join(' · ');
   return `
     <a class="collection-card" href="catalog.html?collection=${c.slug}">
-      <div class="card-img">${preview ? watchSVG(preview, 150) : ''}</div>
+      ${c.isNew ? '<span class="badge">Новинка</span>' : ''}
+      <div class="card-img ${preview && preview.image ? 'has-photo' : ''}">${preview ? productImage(preview, 150) : ''}</div>
       <div class="card-body">
         <h3>${c.name}</h3>
         ${tags ? `<div class="muted small">${tags}</div>` : ''}
         <p class="small">${c.about}</p>
         <div class="collection-meta">
           <span>${c.count} ${plural(c.count)}</span>
-          <span class="price">${c.priceFrom ? `от ${c.priceFrom} USD` : 'Цена по запросу'}</span>
+          <span class="price">${c.priceFrom ? `от ${formatPrice(c.priceFrom)}` : 'Цена по запросу'}</span>
         </div>
       </div>
     </a>`;

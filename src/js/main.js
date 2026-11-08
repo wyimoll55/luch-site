@@ -6,8 +6,48 @@ import collections from '../data/collections.json';
 // Данные собраны с официального сайта luch.by (коллекции, артикулы, цены в USD)
 export { watches, collections };
 
-// Цена: «199 USD» или «Цена по запросу», если на сайте её нет
-export const formatPrice = p => (p ? `${p} USD` : 'Цена по запросу');
+// Знак белорусского рубля: Б с горизонтальной чертой (рисуем SVG — в шрифтах такого знака нет)
+export const BYN = '<svg class="byn" viewBox="0 0 20 28" aria-label="руб."><path d="M17 3H6v22h5a6 6 0 0 0 0-12H6M1.5 19.5h9" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>';
+
+// Цена в рублях: «775 Б» или «Цена по запросу»
+export const formatPrice = byn =>
+  byn ? `${byn.toLocaleString('ru-RU')} ${BYN}` : 'Цена по запросу';
+
+// ---------- Корзина (хранится в браузере) ----------
+const CART_KEY = 'luch-cart';
+export function getCart() {
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; }
+}
+function saveCart(ids) {
+  try { localStorage.setItem(CART_KEY, JSON.stringify(ids)); } catch {}
+}
+export function toggleCart(id) {
+  const cart = getCart();
+  const inCart = cart.includes(id);
+  saveCart(inCart ? cart.filter(x => x !== id) : [...cart, id]);
+  return !inCart;
+}
+
+// Всплывающее сообщение внизу экрана
+export function toast(text) {
+  let t = document.querySelector('.toast');
+  if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.append(t); }
+  t.textContent = text;
+  t.classList.add('show');
+  clearTimeout(t.timer);
+  t.timer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// Кнопки «В корзину» работают на любой странице
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.cart-btn');
+  if (!btn) return;
+  e.preventDefault();
+  const added = toggleCart(btn.dataset.id);
+  btn.classList.toggle('in-cart', added);
+  btn.textContent = added ? 'В корзине ✓' : 'В корзину';
+  toast(added ? 'Добавлено в корзину' : 'Убрано из корзины');
+});
 
 // ---------- Шапка и подвал ----------
 // Меню как в макете: «Интернет-магазин» с выпадающим списком + отдельные кнопки
@@ -123,10 +163,20 @@ export function watchSVG(w, size = 220) {
     : `<line x1="100" y1="100" x2="130" y2="78" stroke="${w.hand}" stroke-width="4" stroke-linecap="round"/>
        <line x1="100" y1="100" x2="100" y2="38" stroke="${w.hand}" stroke-width="2.5" stroke-linecap="round"/>`;
 
+  // Корпус: будильник (звонки и ножки), настольные часы (подставка) или наручные (ремешок)
+  const body = w.type === 'Будильник'
+    ? `<line x1="52" y1="182" x2="40" y2="198" stroke="#8c8f94" stroke-width="7" stroke-linecap="round"/>
+       <line x1="148" y1="182" x2="160" y2="198" stroke="#8c8f94" stroke-width="7" stroke-linecap="round"/>
+       <path d="M30 52 A34 34 0 0 1 78 14 Z" fill="${w.dial === '#fff' ? '#c9ccd1' : '#9aa0a8'}"/>
+       <path d="M170 52 A34 34 0 0 0 122 14 Z" fill="${w.dial === '#fff' ? '#c9ccd1' : '#9aa0a8'}"/>`
+    : w.type === 'Настольные часы'
+    ? `<rect x="60" y="178" width="80" height="18" rx="6" fill="#d9a7b4"/>`
+    : `<rect x="82" y="0" width="36" height="30" rx="6" fill="#6b5f50"/>
+       <rect x="82" y="170" width="36" height="30" rx="6" fill="#6b5f50"/>`;
+
   return `
     <svg viewBox="0 0 200 200" width="${size}" height="${size}" class="watch-svg" aria-hidden="true">
-      <rect x="82" y="0" width="36" height="30" rx="6" fill="#6b5f50"/>
-      <rect x="82" y="170" width="36" height="30" rx="6" fill="#6b5f50"/>
+      ${body}
       <circle cx="100" cy="100" r="92" fill="#c9ccd1"/>
       <circle cx="100" cy="100" r="86" fill="${w.dial}"/>
       ${marks}
@@ -134,22 +184,30 @@ export function watchSVG(w, size = 220) {
             fill="${w.hand}" font-family="Georgia, serif">ЛУЧ</text>
       ${hands}
       <circle cx="100" cy="100" r="4" fill="${w.hand}"/>
-      <rect x="190" y="94" width="8" height="12" rx="2" fill="#a9adb3"/>
+      ${w.type === 'Часы' || !w.type ? '<rect x="190" y="94" width="8" height="12" rx="2" fill="#a9adb3"/>' : ''}
     </svg>`;
 }
 
-// ---------- Карточка в каталоге ----------
+// ---------- Карточка в каталоге (как в макете) ----------
+// Есть фото — показываем фото, нет — рисуем часы кодом
+export function productImage(w, size = 220) {
+  return w.image
+    ? `<img src="${w.image}" alt="${w.name}" loading="lazy" />`
+    : watchSVG(w, size);
+}
+
 export function productCard(w) {
-  const info = [w.collection, w.mechanism].filter(Boolean).join(' · ');
+  const inCart = getCart().includes(w.id);
   return `
-    <a class="card" href="product.html?id=${w.id}">
-      <div class="card-img">${watchSVG(w, 180)}</div>
-      <div class="card-body">
-        <div class="muted small">${info}</div>
-        <h3>${w.name}</h3>
-        <div class="price">${formatPrice(w.price)}</div>
-      </div>
-    </a>`;
+    <div class="pcard">
+      <a class="pcard-img ${w.image ? 'has-photo' : ''}" href="product.html?id=${w.id}">
+        ${w.isNew ? '<span class="badge">Новинка</span>' : ''}
+        ${productImage(w, 190)}
+      </a>
+      <a class="pcard-name" href="product.html?id=${w.id}">${w.name}</a>
+      <div class="pcard-price">${formatPrice(w.priceByn)}</div>
+      <button class="cart-btn ${inCart ? 'in-cart' : ''}" data-id="${w.id}">${inCart ? 'В корзине ✓' : 'В корзину'}</button>
+    </div>`;
 }
 
 renderHeader();
