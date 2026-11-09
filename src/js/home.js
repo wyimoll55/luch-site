@@ -45,3 +45,15 @@ function restart() {
 
 show(0);
 restart();
+
+// ---------- Человек с часами ровно со слайдером ----------
+// Верх и низ картинки совпадают с верхом и низом слайдера на компьютере
+const man = document.querySelector('.hero-man');
+const slider = document.querySelector('#slider');
+function alignMan() {
+  if (window.innerWidth <= 800) { man.style.height = ''; return; }
+  man.style.height = slider.offsetHeight + 'px';
+}
+window.addEventListener('resize', alignMan);
+man.complete ? alignMan() : man.addEventListener('load', alignMan);
+alignMan();

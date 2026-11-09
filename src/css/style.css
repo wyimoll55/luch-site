@@ -86,7 +86,9 @@ main { min-height: 70vh; padding-bottom: 48px; }
   align-items: start; padding-top: 8px;
 }
 .hero > * { min-width: 0; }   /* не даём слайдеру растянуть колонку */
-.hero-man { width: 100%; max-width: 500px; display: block; margin-top: 16px; }
+.hero-left { align-self: stretch; display: flex; align-items: flex-end; justify-content: center; }
+/* Человек с часами — по высоте ровно со слайдером (высоту подгоняет home.js) */
+.hero-man { display: block; height: auto; width: auto; max-width: 100%; max-height: 610px; }
 .hero-title {
   text-align: center; text-transform: uppercase; letter-spacing: .12em;
   font-size: clamp(16px, 2vw, 26px); font-weight: 800; margin: 8px auto 20px; max-width: 620px;
@@ -427,7 +429,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
 
   .hero { grid-template-columns: 1fr; gap: 0; }
   .hero-left { display: flex; justify-content: center; order: 2; }
-  .hero-man { max-width: 260px; margin-top: 32px; }
+  .hero-man { max-width: 220px; margin-top: 32px; height: auto !important; }
   .hero-title { margin: 16px auto 16px; font-size: clamp(15px, 4vw, 22px); }
   .slider { border-radius: 28px; max-width: 480px; }
   .slider-btn { width: 38px; height: 38px; font-size: 16px; }
