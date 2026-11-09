@@ -106,7 +106,7 @@ function renderHeader() {
       </a>
       <form class="search pill" action="catalog.html">
         <input name="q" placeholder="Поиск" aria-label="Поиск" />
-        <span aria-hidden="true">⌕</span>
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/></svg>
       </form>
       <a href="index.html" class="logo"><img src="images/logo.svg" alt="Луч" /></a>
     </div>`;
