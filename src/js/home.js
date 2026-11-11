@@ -1,6 +1,6 @@
 import './main.js';
 import slideY2k from '../assets/slide-y2k.jpg';
-import slideChina from '../assets/slide-china.jpg';   // картинка слайда «Китайский стиль»   // картинка слайда «Эстетика 2000-х»
+import slideChina from '../assets/slide-china2.jpg';   // картинка слайда «Китайский стиль»   // картинка слайда «Эстетика 2000-х»
 
 // ---------- Слайдер ----------
 // Слайд — это либо картинка (image), либо цветной фон с подписью (bg).
