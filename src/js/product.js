@@ -1,4 +1,5 @@
-import { watches, productImage, productCard, formatPrice, getCart } from './main.js';
+import '../css/gallery.css';
+import { watches, productImage, productCard, formatPrice, getCart, glass } from './main.js';
 
 // Берём id (артикул) из адреса: product.html?id=97460638
 const id = new URLSearchParams(location.search).get('id');
@@ -16,7 +17,7 @@ if (!w) {
   root.innerHTML = `
     <a href="catalog.html?collection=${w.collectionSlug}" class="back">← ${w.collection}</a>
     <div class="product">
-      <div class="product-img ${w.image ? 'has-photo' : ''}">${productImage(w, 380)}</div>
+      ${(w.gallery && w.gallery.length > 1) ? galleryHTML(w.gallery, w.name) : `<div class="product-img ${w.image ? 'has-photo' : ''}">${productImage(w, 380)}</div>`}
       <div class="product-info">
         <a class="muted" href="catalog.html?collection=${w.collectionSlug}">Коллекция ${w.collection}</a>
         <h1>${w.name}</h1>
@@ -46,4 +47,42 @@ if (!w) {
   document.querySelector('#similar').innerHTML = similar.length
     ? similar.map(productCard).join('')
     : '<p class="muted">Других моделей в коллекции нет.</p>';
+}
+
+// ---------- Галерея как на luch.by: миниатюры слева, стрелки у главного фото ----------
+function galleryHTML(imgs, name) {
+  return `
+  <div class="gallery" id="gallery">
+    <div class="g-thumbs">
+      <button class="g-up" aria-label="Выше">&#8963;</button>
+      <div class="g-list">${imgs.map((src, i) => `<button class="g-thumb ${i === 0 ? 'active' : ''}" data-i="${i}"><img src="${src}" alt="${name}, фото ${i + 1}" /></button>`).join('')}</div>
+      <button class="g-down" aria-label="Ниже">&#8964;</button>
+    </div>
+    <div class="g-main">
+      <img id="g-big" src="${imgs[0]}" alt="${name}" />
+      <button class="g-arrow g-prev" aria-label="Предыдущее фото">←</button>
+      <button class="g-arrow g-next" aria-label="Следующее фото">→</button>
+    </div>
+  </div>`;
+}
+
+const gallery = document.querySelector('#gallery');
+if (gallery) {
+  const thumbs = [...gallery.querySelectorAll('.g-thumb')];
+  const big = gallery.querySelector('#g-big');
+  const list = gallery.querySelector('.g-list');
+  gallery.querySelectorAll('.g-arrow').forEach(glass);
+  let cur = 0;
+  function go(i) {
+    cur = (i + thumbs.length) % thumbs.length;
+    big.src = thumbs[cur].querySelector('img').src;
+    thumbs.forEach((t, n) => t.classList.toggle('active', n === cur));
+  }
+  thumbs.forEach((t, n) => t.addEventListener('click', () => go(n)));
+  gallery.querySelector('.g-prev').addEventListener('click', () => go(cur - 1));
+  gallery.querySelector('.g-next').addEventListener('click', () => go(cur + 1));
+  gallery.querySelector('.g-up').addEventListener('click', () => go(cur - 1));
+  gallery.querySelector('.g-down').addEventListener('click', () => go(cur + 1));
+  // Если фото одно-два, стрелки у миниатюр не нужны — оставляем их только при большом списке
+  if (thumbs.length <= 4) gallery.classList.add('few');
 }

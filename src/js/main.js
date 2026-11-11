@@ -4,6 +4,7 @@ import watches from '../data/watches.json';
 import collections from '../data/collections.json';
 
 // Данные собраны с официального сайта luch.by (коллекции, артикулы, цены в USD)
+import '../css/hover.css';
 export { watches, collections };
 
 // Знак белорусского рубля: Б с горизонтальной чертой (рисуем SVG — в шрифтах такого знака нет)
@@ -229,6 +230,7 @@ export function productCard(w) {
       <a class="pcard-img ${w.image ? 'has-photo' : ''}" href="product.html?id=${w.id}">
         ${w.isNew ? '<span class="badge">Новинка</span>' : ''}
         ${productImage(w, 190)}
+        ${w.gallery && w.gallery[1] ? `<img class="hover-img" src="${w.gallery[1]}" alt="" loading="lazy" />` : ''}
       </a>
       <a class="pcard-name" href="product.html?id=${w.id}">${w.name}</a>
       <div class="pcard-price">${formatPrice(w.priceByn)}</div>

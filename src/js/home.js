@@ -6,7 +6,7 @@ import './main.js';
 const slides = [
   { image: 'images/slide-new.jpg', alt: 'Новые коллекции', link: 'catalog.html' },
   { image: 'images/slide-brutalism.jpg', alt: 'Новая коллекция «Брутализм»', link: 'catalog.html' },
-  { bg: 'linear-gradient(135deg, #8db9dc, #bcd4e9 45%, #ccd6d1)', title: 'Эстетика 2000-х', text: 'Хром, глянец и прозрачность', link: 'catalog.html', dark: true },
+  { image: 'images/slide-y2k.jpg', alt: 'Новая коллекция «Эстетика 2000-х»', link: 'catalog.html' },
   { bg: 'linear-gradient(135deg, #3b2a22, #8b1414 50%, #d9935a)', title: 'Китайский стиль', text: 'Символизм, природа и каллиграфия', link: 'catalog.html' },
 ];
 
