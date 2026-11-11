@@ -59,3 +59,8 @@ function alignMan() {
 window.addEventListener('resize', alignMan);
 man.complete ? alignMan() : man.addEventListener('load', alignMan);
 alignMan();
+
+// На телефоне (до 800 px) человека с часами скрываем, на компьютере и ноутбуке он остаётся
+const hideManStyle = document.createElement('style');
+hideManStyle.textContent = '@media (max-width: 800px) { .hero-man { display: none !important; } }';
+document.head.appendChild(hideManStyle);
