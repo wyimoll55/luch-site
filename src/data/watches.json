@@ -129,7 +129,11 @@
     "waterRes": null,
     "chrono": false,
     "limited": true,
-    "isNew": true
+    "isNew": true,
+    "gallery": [
+      "images/catalog/mirazh.jpg",
+      "images/catalog/mirazh-wrist.jpg"
+    ]
   },
   {
     "id": "97460638",
