@@ -139,7 +139,7 @@
     "id": "y2k-amalgama",
     "name": "Часы Амальгама",
     "priceByn": 599,
-    "image": "images/catalog/amalgama.jpg",
+    "image": "images/catalog/amalgama-hd.jpg",
     "article": "—",
     "type": "Часы",
     "collection": "Эстетика 2000-х",
@@ -165,7 +165,7 @@
     "limited": true,
     "isNew": true,
     "gallery": [
-      "images/catalog/amalgama.jpg",
+      "images/catalog/amalgama-hd.jpg",
       "images/catalog/amalgama-wrist.jpg"
     ]
   },
