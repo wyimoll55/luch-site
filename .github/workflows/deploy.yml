@@ -27,8 +27,28 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # 1) Версия на HTML/JS (Vite) -> https://wyimoll55.github.io/luch-site/
       - run: npm ci
       - run: npm run build
+
+      # 2) Версия на Kotlin/JS (Gradle) -> https://wyimoll55.github.io/luch-site/kotlin/
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Сборка версии на Kotlin
+        continue-on-error: true      # если Kotlin не соберётся, HTML-версия всё равно опубликуется
+        working-directory: kotlin-site
+        run: |
+          chmod +x gradlew
+          ./gradlew jsBrowserDistribution --no-daemon
+      - name: Положить Kotlin-версию в папку /kotlin
+        run: |
+          if [ -d kotlin-site/build/dist/js/productionExecutable ]; then
+            mkdir -p dist/kotlin
+            cp -r kotlin-site/build/dist/js/productionExecutable/* dist/kotlin/
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

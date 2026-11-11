@@ -18,8 +18,8 @@ const GROUPS = {
   accessories: [
     { key: 'width', title: 'Размер (ширина), мм', options: ['18', '20', '22', '24'] },
     { key: 'type', title: 'Тип изделия', options: ['Браслет', 'Браслет для часов', 'Картхолдер', 'Колье', 'Кольцо', 'Набор платков', 'Обложка для паспорта', 'Платок женский', 'Платок-ремень', 'Ремешок', 'Ролл для часов', 'Серьги'] },
-    { key: 'color', title: 'Цвет', collapsed: true, options: ['Серебристый', 'Золотистый', 'Чёрный', 'Коричневый', 'Бежевый'] },
-    { key: 'material', title: 'Материал', collapsed: true, options: ['Металл', 'Кожа', 'Шёлк', 'Текстиль'] },
+    { key: 'color', title: 'Цвет', collapsed: true, options: ['Белый', 'Бежевый', 'Голубой', 'Зелёный', 'Золотистый', 'Красный', 'Малиновый', 'Морская волна', 'Серебристый', 'Серый', 'Синий', 'Тёмно-синий', 'Чёрный'] },
+    { key: 'material', title: 'Материал', collapsed: true, options: ['Мельхиор и нейзильбер', 'Натуральная кожа', 'Нейлон', 'Нержавеющая сталь', 'Полиэстер'] },
   ],
 };
 const FLAGS = [
@@ -32,6 +32,8 @@ const params = new URLSearchParams(location.search);
 const query = (params.get('q') || '').trim().toLowerCase();
 let collectionSlug = params.get('collection') || '';
 let tab = params.get('tab') || 'wrist';
+let sub = params.get('sub') || '';   // подкатегория аксессуаров: platki, ukrasheniya, remeshki, kozha, kaffy
+if (sub) tab = 'accessories';
 if (collectionSlug) {
   const first = watches.find(w => w.collectionSlug === collectionSlug);
   if (first) tab = first.category;
@@ -49,6 +51,17 @@ if (searchInput) searchInput.value = query;
 
 const fieldValue = (g, w) => (g.value ? g.value(w) : w[g.key]);
 const inTab = w => w.category === tab;
+const inSub = w => tab !== 'accessories' || !sub || w.sub === sub;
+
+// Подкатегории аксессуаров — как в меню luch.by
+const SUBS = [
+  { key: '', label: 'Все' },
+  { key: 'platki', label: 'Платки' },
+  { key: 'ukrasheniya', label: 'Украшения' },
+  { key: 'remeshki', label: 'Ремешки / Браслеты' },
+  { key: 'kozha', label: 'Изделия из кожи' },
+  { key: 'kaffy', label: 'Каффы' },
+];
 const maxPrice = () => Math.max(0, ...watches.filter(inTab).map(w => w.priceByn || 0));
 
 // ---------- Фильтрация ----------
@@ -58,7 +71,7 @@ function filtered() {
   const priceTouched = from > 0 || to < maxPrice();
 
   let list = watches.filter(w =>
-    inTab(w) &&
+    inTab(w) && inSub(w) &&
     (!collectionSlug || w.collectionSlug === collectionSlug) &&
     (!query || w.name.toLowerCase().includes(query) || w.collection.toLowerCase().includes(query)) &&
     FLAGS.every(f => !checked[f.key] || w[f.key]) &&
@@ -108,13 +121,25 @@ function renderFilters() {
 
 function renderTabs() {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  // Ряд подкатегорий виден только во вкладке «Аксессуары»
+  const row = el('subtabs');
+  row.hidden = tab !== 'accessories';
+  row.innerHTML = SUBS.map(s => `<button class="sub-btn ${s.key === sub ? 'active' : ''}" data-sub="${s.key}">${s.label}</button>`).join('');
 }
 
 function renderList() {
   const list = filtered();
+  if (tab === 'accessories' && sub && !list.length) {
+    el('active-collection').innerHTML = '';
+    el('count').textContent = 'Найдено: 0';
+    el('catalog-list').innerHTML = '<p class="muted">Изделия из кожи скоро появятся.</p>';
+    el('pager').style.display = 'none';
+    return;
+  }
   const c = collections.find(x => x.slug === collectionSlug);
   el('active-collection').innerHTML = c
-    ? `<span class="chip">Коллекция: ${c.name} <button id="clear-collection" aria-label="Убрать">✕</button></span>
+    ? `${c.banner ? `<img class="collection-banner" src="${c.banner}" alt="Коллекция ${c.name}" />` : ''}
+       <span class="chip">Коллекция: ${c.name} <button id="clear-collection" aria-label="Убрать">✕</button></span>
        <p class="muted small">${c.about}</p>`
     : '';
 
@@ -145,9 +170,19 @@ el('tabs').addEventListener('click', e => {
   const b = e.target.closest('.tab-btn');
   if (!b || b.dataset.tab === tab) return;
   tab = b.dataset.tab;
+  sub = '';
   collectionSlug = '';
   Object.keys(checked).forEach(k => delete checked[k]);
   resetPrice(); renderTabs(); renderFilters(); update();
+});
+
+el('subtabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-sub]');
+  if (!b) return;
+  sub = b.dataset.sub;
+  collectionSlug = '';
+  history.replaceState(null, '', sub ? `catalog.html?sub=${sub}` : 'catalog.html?tab=accessories');
+  renderTabs(); update();
 });
 
 el('filter-groups').addEventListener('click', e => {

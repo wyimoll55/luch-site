@@ -80,6 +80,29 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .logo img { height: 26px; display: block; }
 .burger { display: none; font-size: 20px; padding: 6px 12px; }
 
+/* Подменю «Аксессуары ›» в выпадающем меню */
+.dropdown-menu .has-sub { position: relative; }
+.sub-arrow { font-size: 16px; margin-left: 2px; }
+.submenu {
+  display: none; position: absolute; left: calc(100% + 26px); top: -14px; min-width: 210px;
+  background: rgba(255, 255, 255, .94);   /* внутри размытого меню второе размытие не работает — делаем почти белым */ border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: 12px; box-shadow: var(--pill-shadow); padding: 12px 20px 14px 36px;
+  list-style: disc; color: var(--text); font-size: 14px;
+}
+.submenu::before { content: ''; position: absolute; top: 0; bottom: 0; left: -30px; width: 30px; }
+.has-sub:hover > .submenu { display: block; }
+.submenu li { padding: 2px 0; }
+
+/* Подкатегории аксессуаров в каталоге */
+.catalog-subtabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: -12px 0 32px; }
+.catalog-subtabs[hidden] { display: none; }
+.sub-btn {
+  background: var(--surface); border: 0; border-radius: 14px; box-shadow: var(--pill-shadow);
+  padding: 9px 20px; font: inherit; font-size: 16px; cursor: pointer; transition: transform .15s;
+}
+.sub-btn:hover { transform: translateY(-1px); }
+.sub-btn.active { text-decoration: underline; text-underline-offset: 4px; font-weight: 600; }
+
 /* ---------- Главная ---------- */
 .hero {
   display: grid; grid-template-columns: 5fr 7fr; gap: 40px;
@@ -320,6 +343,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
 .cart-total { display: flex; justify-content: space-between; align-items: center; gap: 20px; max-width: 900px; margin-top: 28px; font-size: 22px; flex-wrap: wrap; }
 .cart-empty { padding: 20px 0 40px; font-size: 18px; }
 
+.collection-banner { width: 100%; border-radius: 20px; display: block; margin-bottom: 16px; box-shadow: var(--pill-shadow); }
 .active-collection .chip {
   display: inline-flex; align-items: center; gap: 8px; background: var(--surface); box-shadow: var(--pill-shadow);
   border-radius: 20px; padding: 6px 8px 6px 16px; font-weight: 500;
@@ -424,6 +448,7 @@ main { min-height: 70vh; padding-bottom: 48px; }
   }
   .nav.open { display: flex; }
   .dropdown-menu { position: static; margin-top: 8px; }
+  .submenu { position: static; display: block; box-shadow: none; border: 0; padding: 4px 0 0 18px; background: none; }
   .search { width: 130px; }
   .logo img { height: 22px; }
 
