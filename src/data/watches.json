@@ -207,7 +207,7 @@
     "id": "cn-shinuazri",
     "name": "Часы Шинуазри",
     "priceByn": 899,
-    "image": "images/catalog/shinuazri.jpg",
+    "image": "images/catalog/shinuazri2.jpg",
     "article": "—",
     "type": "Часы",
     "collection": "Китайский стиль",
@@ -233,7 +233,7 @@
     "limited": true,
     "isNew": true,
     "gallery": [
-      "images/catalog/shinuazri.jpg",
+      "images/catalog/shinuazri2.jpg",
       "images/catalog/shinuazri-wrist.jpg"
     ]
   },
