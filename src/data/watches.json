@@ -4188,5 +4188,39 @@
     "caseMaterial": null,
     "glassType": null,
     "waterRes": null
+  },
+  {
+    "id": "cn-shinuazri",
+    "name": "Часы Шинуазри",
+    "priceByn": 899,
+    "image": "images/catalog/shinuazri.jpg",
+    "article": "—",
+    "type": "Часы",
+    "collection": "Китайский стиль",
+    "collectionSlug": "kitayskiy-stil",
+    "gender": "Женские",
+    "mechanism": "Кварц",
+    "case": "металл золотистого цвета",
+    "glass": "сапфировое",
+    "water": null,
+    "price": null,
+    "currency": "BYN",
+    "dial": "#8c1c2b",
+    "hand": "#d9b56a",
+    "oneHand": false,
+    "url": null,
+    "category": "wrist",
+    "winding": "Кварцевый",
+    "movementBrand": null,
+    "caseMaterial": "Нержавеющая сталь",
+    "glassType": "Сапфировое",
+    "waterRes": null,
+    "chrono": false,
+    "limited": true,
+    "isNew": true,
+    "gallery": [
+      "images/catalog/shinuazri.jpg",
+      "images/catalog/shinuazri-wrist.jpg"
+    ]
   }
 ]
