@@ -75,14 +75,6 @@ const shopMenu = [
   { href: 'about.html', label: 'О компании' },
   { href: 'contacts.html', label: 'Контакты' },
 ];
-// Подменю «Аксессуары»
-const accessoryMenu = [
-  { key: 'platki', label: 'Платки' },
-  { key: 'ukrasheniya', label: 'Украшения' },
-  { key: 'remeshki', label: 'Ремешки / Браслеты' },
-  { key: 'kozha', label: 'Изделия из кожи' },
-  { key: 'kaffy', label: 'Каффы' },
-];
 const topMenu = [
   { href: '#', label: 'Оплата и доставка' },
   { href: '#', label: 'Новости и акции' },
@@ -93,13 +85,7 @@ function renderHeader() {
   const current = location.pathname.split('/').pop() || 'index.html';
   const dropdown = shopMenu
     .map(p => `<li><a href="${p.href}" class="${p.href === current ? 'current' : ''}">${p.label}</a></li>`)
-    .join('') + `
-    <li class="has-sub">
-      <a href="catalog.html?tab=accessories">Аксессуары <span class="sub-arrow">›</span></a>
-      <ul class="submenu">
-        ${accessoryMenu.map(s => `<li><a href="catalog.html?sub=${s.key}">${s.label}</a></li>`).join('')}
-      </ul>
-    </li>`;
+    .join('');
 
   document.querySelector('#header').innerHTML = `
     <div class="container header-inner">
@@ -130,7 +116,6 @@ function renderHeader() {
 
   // Размытие фона под меню задаём здесь, а не в CSS: при сборке для GitHub оно из CSS пропадало
   glass(dd.querySelector('.dropdown-menu'));
-  glass(dd.querySelector('.submenu'));
   document.querySelector('#shop-btn').addEventListener('click', e => {
     e.stopPropagation();
     dd.classList.toggle('open');

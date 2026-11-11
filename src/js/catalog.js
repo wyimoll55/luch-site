@@ -121,10 +121,6 @@ function renderFilters() {
 
 function renderTabs() {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
-  // Ряд подкатегорий виден только во вкладке «Аксессуары»
-  const row = el('subtabs');
-  row.hidden = tab !== 'accessories';
-  row.innerHTML = SUBS.map(s => `<button class="sub-btn ${s.key === sub ? 'active' : ''}" data-sub="${s.key}">${s.label}</button>`).join('');
 }
 
 function renderList() {
@@ -174,15 +170,6 @@ el('tabs').addEventListener('click', e => {
   collectionSlug = '';
   Object.keys(checked).forEach(k => delete checked[k]);
   resetPrice(); renderTabs(); renderFilters(); update();
-});
-
-el('subtabs').addEventListener('click', e => {
-  const b = e.target.closest('[data-sub]');
-  if (!b) return;
-  sub = b.dataset.sub;
-  collectionSlug = '';
-  history.replaceState(null, '', sub ? `catalog.html?sub=${sub}` : 'catalog.html?tab=accessories');
-  renderTabs(); update();
 });
 
 el('filter-groups').addEventListener('click', e => {
