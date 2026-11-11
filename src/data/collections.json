@@ -5,7 +5,7 @@
     "about": "Новая коллекция команды «Солнечные»: бетон, геометрия и монолитность в стальных корпусах.",
     "gender": "Унисекс",
     "mechanism": "Кварц",
-    "count": 4,
+    "count": 3,
     "priceFrom": 599,
     "url": null,
     "preview": "brut-zatmenie",
@@ -126,7 +126,7 @@
     "gender": "Унисекс",
     "mechanism": "Механика",
     "count": 4,
-    "priceFrom": 2929,
+    "priceFrom": 2599,
     "url": "https://luch.by/kollektsii/orion/",
     "preview": "740567717",
     "isNew": true
@@ -218,7 +218,7 @@
     "gender": "Женские",
     "mechanism": null,
     "count": 1,
-    "priceFrom": 685,
+    "priceFrom": 599,
     "url": "https://luch.by/kollektsii/echo/",
     "preview": "940540699"
   },
