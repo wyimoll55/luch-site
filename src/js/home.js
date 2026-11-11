@@ -1,4 +1,5 @@
 import './main.js';
+import slideY2k from '../assets/slide-y2k.jpg';   // картинка слайда «Эстетика 2000-х»
 
 // ---------- Слайдер ----------
 // Слайд — это либо картинка (image), либо цветной фон с подписью (bg).
@@ -6,7 +7,7 @@ import './main.js';
 const slides = [
   { image: 'images/slide-new.jpg', alt: 'Новые коллекции', link: 'catalog.html' },
   { image: 'images/slide-brutalism.jpg', alt: 'Новая коллекция «Брутализм»', link: 'catalog.html' },
-  { image: 'images/slide-y2k.jpg', alt: 'Новая коллекция «Эстетика 2000-х»', link: 'catalog.html' },
+  { image: slideY2k, alt: 'Новая коллекция «Эстетика 2000-х»', link: 'catalog.html' },
   { bg: 'linear-gradient(135deg, #3b2a22, #8b1414 50%, #d9935a)', title: 'Китайский стиль', text: 'Символизм, природа и каллиграфия', link: 'catalog.html' },
 ];
 
