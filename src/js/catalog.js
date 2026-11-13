@@ -99,7 +99,10 @@ function renderFilters() {
 
   const groups = GROUPS[tab].map(g => {
     const isCollapsed = collapsed[g.key] ?? !!g.collapsed;
-    const opts = g.options.map(o => {
+    // Показываем только те галочки, под которые есть товары: пустых («0») в списке нет
+    const live = g.options.filter(o => count(g, o) > 0);
+    if (!live.length) return '';   // вся группа пустая — не показываем её совсем
+    const opts = live.map(o => {
       const n = count(g, o);
       return `
         <label class="check-row ${n ? '' : 'empty'}">
