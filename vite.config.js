@@ -16,6 +16,7 @@ export default defineConfig(({ command }) => ({
         product: resolve(import.meta.dirname, 'product.html'),
         about: resolve(import.meta.dirname, 'about.html'),
         contacts: resolve(import.meta.dirname, 'contacts.html'),
+        special: resolve(import.meta.dirname, 'special.html'),
         payment: resolve(import.meta.dirname, 'payment.html'),
         news: resolve(import.meta.dirname, 'news.html'),
         museum: resolve(import.meta.dirname, 'museum.html'),

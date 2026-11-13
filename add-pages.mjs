@@ -1,8 +1,8 @@
-// Дописывает страницы payment, news, museum в список страниц сборки (vite.config.js)
+// Дописывает страницы payment, news, museum, special в список страниц сборки (vite.config.js)
 import fs from 'node:fs';
 const file = ['vite.config.js', 'vite.config.mjs', 'vite.config.ts'].find(f => fs.existsSync(f));
 if (!file) { console.log('НЕ НАЙДЕН vite.config.js. Запустите команду в папке проекта.'); process.exit(1); }
-const pages = ['payment', 'news', 'museum'];
+const pages = ['payment', 'news', 'museum', 'special'];
 let text = fs.readFileSync(file, 'utf8');
 const need = pages.filter(p => !text.includes(p + '.html'));
 if (!need.length) { console.log('Страницы уже есть в ' + file + ', менять нечего.'); process.exit(0); }

@@ -72,7 +72,7 @@ const shopMenu = [
   { href: 'index.html', label: 'Главная' },
   { href: 'catalog.html', label: 'Каталог' },
   { href: 'collections.html', label: 'Коллекции' },
-  { href: '#', label: 'Спецзаказ' },
+  { href: 'special.html', label: 'Спецзаказ' },
   { href: 'about.html', label: 'О компании' },
   { href: 'contacts.html', label: 'Контакты' },
 ];
