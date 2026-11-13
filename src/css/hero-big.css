@@ -2,5 +2,6 @@
 @media (min-width: 801px) {
   .slider { max-width: 670px; }                               /* чуть меньше полного размера (было 620, полный около 720) */
   .hero-title { max-width: 670px; margin: 12px auto 16px; }   /* надпись ниже, слайдер на месте */
-  .hero-man { max-height: 840px; }
+  .hero-left { align-items: flex-start; }                      /* человек прижат к верху и растёт вниз */
+  .hero-man { max-height: 940px; object-fit: contain; }
 }
