@@ -1,14 +1,15 @@
 import './main.js';
 import '../css/hero-big.css';   // большой слайдер на главной, как был сначала
 import slideY2k from '../assets/slide-y2k.jpg';
-import slideChina from '../assets/slide-china2.jpg';   // картинка слайда «Китайский стиль»   // картинка слайда «Эстетика 2000-х»
+import slideChina from '../assets/slide-china3.jpg';
+import slideBrut from '../assets/slide-brut3.jpg';   // картинка слайда «Китайский стиль»   // картинка слайда «Эстетика 2000-х»
 
 // ---------- Слайдер ----------
 // Слайд — это либо картинка (image), либо цветной фон с подписью (bg).
 // Чтобы добавить слайд, допишите объект в этот массив.
 const slides = [
   { image: 'images/slide-new.jpg', alt: 'Новые коллекции', link: 'catalog.html' },
-  { image: 'images/slide-brutalism.jpg', alt: 'Новая коллекция «Брутализм»', link: 'catalog.html' },
+  { image: slideBrut, alt: 'Новая коллекция «Брутализм»', link: 'catalog.html' },
   { image: slideY2k, alt: 'Новая коллекция «Эстетика 2000-х»', link: 'catalog.html' },
   { image: slideChina, alt: 'Новая коллекция «Китайский стиль»', link: 'catalog.html' },
 ];
