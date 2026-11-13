@@ -51,6 +51,7 @@
 .inf-tile span { font-size: 14px; }
 .inf-tile-new { background: var(--dark); color: #fff; transition: transform .2s; }
 .inf-tile-new:hover { transform: translateY(-3px); }
+.inf-news-img { width: 100%; aspect-ratio: 5 / 3; object-fit: cover; border-radius: 12px; display: block; }
 .inf-meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .inf-tag { border: 1px solid var(--line); border-radius: 20px; padding: 2px 10px; font-size: 12px; color: var(--muted); }
 .inf-tag-on { background: var(--dark); border-color: var(--dark); color: #fff; }
