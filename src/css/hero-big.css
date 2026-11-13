@@ -1,0 +1,6 @@
+/* Главная: слайдер большого размера, как был сначала (только компьютер и ноутбук) */
+@media (min-width: 801px) {
+  .slider { max-width: none; }
+  .hero-title { max-width: none; }
+  .hero-man { max-height: 760px; }
+}

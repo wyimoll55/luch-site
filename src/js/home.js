@@ -1,4 +1,5 @@
 import './main.js';
+import '../css/hero-big.css';   // большой слайдер на главной, как был сначала
 import slideY2k from '../assets/slide-y2k.jpg';
 import slideChina from '../assets/slide-china2.jpg';   // картинка слайда «Китайский стиль»   // картинка слайда «Эстетика 2000-х»
 
