@@ -77,9 +77,9 @@ const shopMenu = [
   { href: 'contacts.html', label: 'Контакты' },
 ];
 const topMenu = [
-  { href: '#', label: 'Оплата и доставка' },
-  { href: '#', label: 'Новости и акции' },
-  { href: '#', label: 'Музей' },
+  { href: 'payment.html', label: 'Оплата и доставка' },
+  { href: 'news.html', label: 'Новости и акции' },
+  { href: 'museum.html', label: 'Музей' },
 ];
 
 function renderHeader() {
@@ -96,7 +96,7 @@ function renderHeader() {
           <button class="pill" id="shop-btn">Интернет-магазин <span class="arrow">▾</span></button>
           <ul class="dropdown-menu">${dropdown}</ul>
         </div>
-        ${topMenu.map(p => `<a class="pill" href="${p.href}">${p.label}</a>`).join('')}
+        ${topMenu.map(p => `<a class="pill ${p.href === current ? 'current' : ''}" href="${p.href}">${p.label}</a>`).join('')}
       </nav>
       <a class="cart-link" href="cart.html" aria-label="Корзина">
         <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
