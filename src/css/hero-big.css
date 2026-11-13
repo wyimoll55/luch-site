@@ -4,5 +4,5 @@
   .hero-title { max-width: 670px; margin: 12px auto 16px; }   /* надпись ниже, слайдер на месте */
   .hero-left { align-items: flex-end; }                         /* человек стоит на нижней линии */
   .hero > :not(.hero-left) { align-self: end; }                /* надпись и слайдер опущены: низ слайдера ровно с низом человека */
-  .hero-man { max-height: 940px; object-fit: contain; transform: translateY(24px); }   /* человек сдвинут вниз на 24 px: сверху меньше, снизу больше */
+  .hero-man { max-height: 940px; object-fit: contain; transform: translateY(48px); }   /* человек сдвинут вниз на 48 px: сверху меньше, снизу больше */
 }
