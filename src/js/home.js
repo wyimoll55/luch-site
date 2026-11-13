@@ -55,7 +55,7 @@ const man = document.querySelector('.hero-man');
 const slider = document.querySelector('#slider');
 function alignMan() {
   if (window.innerWidth <= 800) { man.style.height = ''; return; }
-  man.style.height = Math.round(slider.offsetHeight * 1.22) + 'px';   // человек на 22% выше слайдера: верх на уровне надписи, низ уходит ниже слайдера
+  man.style.height = Math.round(slider.offsetHeight * 1.2) + 'px';   // человек на 20% выше слайдера, низ ровно с низом слайдера
 }
 window.addEventListener('resize', alignMan);
 man.complete ? alignMan() : man.addEventListener('load', alignMan);
