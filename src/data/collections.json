@@ -356,6 +356,54 @@
   "isNew": true
  },
  {
+  "slug": "metallic-2-0",
+  "name": "Metallic 2.0",
+  "about": "Обновлённая коллекция: квадратный корпус и римские цифры. Шесть моделей на браслетах в цветах золото, розовое золото и серебро.",
+  "gender": "Женские",
+  "mechanism": "Кварц",
+  "count": 6,
+  "priceFrom": 699,
+  "url": null,
+  "preview": "940417670",
+  "banner": "images/banners/metallic-2-0.jpg"
+ },
+ {
+  "slug": "mustart-zatmenie",
+  "name": "MustArt. Затмение",
+  "about": "Лимитированная коллекция завода по эскизу работы-победителя конкурса «MustArt 2024», вдохновлённая солнечным затмением. Включает мужскую и женскую модели.",
+  "gender": "Унисекс",
+  "mechanism": null,
+  "count": 1,
+  "priceFrom": 599,
+  "url": null,
+  "preview": "78567477",
+  "banner": "images/banners/mustart-zatmenie.jpg"
+ },
+ {
+  "slug": "nude-2-0",
+  "name": "Nude 2.0",
+  "about": "Шесть женских моделей нежных оттенков на кожаном ремешке или браслете миланского плетения. Задняя крышка из нержавеющей стали украшена гравировкой в виде цветка.",
+  "gender": "Женские",
+  "mechanism": null,
+  "count": 6,
+  "priceFrom": 419,
+  "url": null,
+  "preview": "78977479",
+  "banner": "images/banners/nude-2-0.jpg"
+ },
+ {
+  "slug": "persona",
+  "name": "Persona",
+  "about": "Женские часы с разным цветом циферблата. Кварцевый механизм Луч 2360М, минеральное стекло, корпус из нержавеющей стали.",
+  "gender": "Женские",
+  "mechanism": "Кварц",
+  "count": 3,
+  "priceFrom": 529,
+  "url": null,
+  "preview": "98680485",
+  "banner": "images/banners/persona.jpg"
+ },
+ {
   "slug": "budilniki",
   "name": "Будильники",
   "about": "Небольшие стильные будильники: украшают интерьер, громко звонят и точно идут. Есть серия с видами белорусских городов.",
