@@ -114,7 +114,7 @@
   "gender": "Женские",
   "mechanism": null,
   "count": 7,
-  "priceFrom": 476,
+  "priceFrom": 409,
   "url": "https://luch.by/kollektsii/light-style-2-0/",
   "preview": "72080755",
   "banner": "images/banners/light-style-2-0.jpg"
@@ -281,6 +281,79 @@
   "url": null,
   "preview": "778449723",
   "banner": "images/banners/blackout-2.jpg"
+ },
+ {
+  "slug": "commander",
+  "name": "Commander",
+  "about": "Две модели: на металлическом браслете и на кожаном ремешке с дополнительным силиконовым ремнём. Швейцарский кварцевый механизм Ronda, корпус из нержавеющей стали, сапфировое стекло с антибликом, водонепроницаемость 10 бар.",
+  "gender": "Мужские",
+  "mechanism": "Кварц",
+  "count": 2,
+  "priceFrom": 929,
+  "url": null,
+  "preview": "96760566",
+  "banner": "images/banners/commander.jpg"
+ },
+ {
+  "slug": "defender",
+  "name": "Defender",
+  "about": "Лаконичные мужские часы с механизмом Луч-1801.1, корпусом из нержавеющей стали и минеральным стеклом с антибликом. Стрелки с люминофором; ремни из кожи, текстиля или металлический браслет.",
+  "gender": "Мужские",
+  "mechanism": "Механика",
+  "count": 4,
+  "priceFrom": 539,
+  "url": null,
+  "preview": "97430554",
+  "banner": "images/banners/defender.jpg"
+ },
+ {
+  "slug": "dot",
+  "name": "Dot",
+  "about": "Часы с необычными стрелками-окружностями в чёрном и белом исполнении, можно носить как парные. Кварцевый механизм Miyota, корпус из стали с хромированным покрытием, минеральное стекло, кожаный ремешок.",
+  "gender": "Унисекс",
+  "mechanism": "Кварц",
+  "count": 2,
+  "priceFrom": 429,
+  "url": null,
+  "preview": "78447326",
+  "banner": "images/banners/dot.jpg"
+ },
+ {
+  "slug": "elegance",
+  "name": "Elegance",
+  "about": "Часы нежных оттенков на кожаных ремешках и браслетах миланского плетения. Корпус из нержавеющей стали, минеральное стекло, кварцевый механизм Miyota.",
+  "gender": "Женские",
+  "mechanism": "Кварц",
+  "count": 4,
+  "priceFrom": 489,
+  "url": null,
+  "preview": "78377675",
+  "banner": "images/banners/elegance.jpg"
+ },
+ {
+  "slug": "formal-2-0",
+  "name": "Formal 2.0",
+  "about": "Элегантные мужские часы с чёткими линиями и лаконичным дизайном: подходят и к деловому костюму, и к повседневному образу.",
+  "gender": "Мужские",
+  "mechanism": "Кварц",
+  "count": 2,
+  "priceFrom": 869,
+  "url": null,
+  "preview": "98420801",
+  "banner": "images/banners/formal-2-0.jpg"
+ },
+ {
+  "slug": "lunary",
+  "name": "Lunary",
+  "about": "Женские часы, созданные вместе с академией имени А. Л. Штиглица; автор дизайна — студентка Цаган Наранова. Корпус-браслет из нержавеющей стали, сферическое сапфировое стекло, кварцевый механизм Miyota.",
+  "gender": "Женские",
+  "mechanism": "Кварц",
+  "count": 1,
+  "priceFrom": 529,
+  "url": null,
+  "preview": "940550703",
+  "banner": "images/banners/lunary.jpg",
+  "isNew": true
  },
  {
   "slug": "budilniki",
