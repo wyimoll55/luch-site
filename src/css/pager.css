@@ -1,0 +1,10 @@
+/* Номера страниц в каталоге: ← 1 … 4 5 6 … 12 → */
+.pager { flex-wrap: wrap; gap: 12px; }
+.pager-num { display: flex; align-items: center; gap: 4px; font-size: 20px; font-weight: 500; }
+.pg {
+  min-width: 40px; height: 40px; padding: 0 6px; border: 0; border-radius: 50%; background: none;
+  font: inherit; color: var(--muted); cursor: pointer; transition: color .15s, background .15s;
+}
+.pg:hover { color: var(--text); background: #ececec; }
+.pg.active { color: var(--text); font-size: 30px; font-weight: 700; cursor: default; background: none; }
+.pg-dots { color: var(--muted); padding: 0 2px; }

@@ -1,4 +1,5 @@
 import { watches, collections, productCard, glass } from './main.js';
+import '../css/pager.css';
 
 // ---------- Настройки фильтров ----------
 // key — поле в watches.json, options — галочки. В одной группе работает «ИЛИ», между группами — «И».
@@ -151,7 +152,12 @@ function renderList() {
     ? list.slice((page - 1) * PAGE, page * PAGE).map(productCard).join('')
     : '<p class="muted">Ничего не найдено. Попробуйте изменить фильтры.</p>';
   el('pager').style.display = list.length > PAGE ? '' : 'none';
-  el('page-num').textContent = page;
+  // Номера страниц: «← 1 … 4 5 6 … 12 →» — первая, последняя и соседние с текущей
+  const nums = [...new Set([1, page - 1, page, page + 1, pages])].filter(n => n >= 1 && n <= pages).sort((x, y) => x - y);
+  el('page-num').innerHTML = nums.map((n, i) =>
+    (i && n - nums[i - 1] > 1 ? '<span class="pg-dots">…</span>' : '') +
+    `<button class="pg ${n === page ? 'active' : ''}" data-page="${n}" aria-label="Страница ${n}">${n}</button>`
+  ).join('');
   el('page-num').title = `Страница ${page} из ${pages}`;
   el('prev').disabled = page === 1;
   el('next').disabled = page === pages;
@@ -231,6 +237,7 @@ function goTo(p) {
   window.scrollTo({ top: el('catalog-list').getBoundingClientRect().top + scrollY - 140, behavior: 'smooth' });
 }
 el('prev').addEventListener('click', () => goTo(page - 1));
+el('page-num').addEventListener('click', e => { const b = e.target.closest('.pg'); if (b) goTo(Number(b.dataset.page)); });
 el('next').addEventListener('click', () => goTo(page + 1));
 
 el('filters-toggle').addEventListener('click', () => el('filters').classList.toggle('open'));

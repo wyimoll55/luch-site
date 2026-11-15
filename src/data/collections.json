@@ -491,6 +491,68 @@
   "isNew": true
  },
  {
+  "slug": "bolshoy-odnostrelochnik",
+  "name": "Большой однострелочник",
+  "about": "Мужские часы с одной стрелкой. Японский механизм Miyota с автоподзаводом, водонепроницаемый стальной корпус, сапфировое стекло с антибликом; кожаный ремешок или стальной браслет.",
+  "gender": "Мужские",
+  "mechanism": "Механика",
+  "count": 6,
+  "priceFrom": 1499,
+  "url": null,
+  "preview": "77490690",
+  "banner": "images/banners/bolshoy-odnostrelochnik.jpg"
+ },
+ {
+  "slug": "vandrounik",
+  "name": "Вандроўнік",
+  "about": "Часы для активного образа жизни: механизм Miyota с автоподзаводом, корпус из нержавеющей стали, сапфировое стекло. В комплекте два ремня: текстильный и силиконовый.",
+  "gender": "Мужские",
+  "mechanism": "Механика",
+  "count": 2,
+  "priceFrom": 1309,
+  "url": null,
+  "preview": "877520682",
+  "banner": "images/banners/vandrounik.jpg"
+ },
+ {
+  "slug": "damasskaya-stal",
+  "name": "Дамасская сталь",
+  "about": "Однострелочник в корпусе из дамасской стали: узор создаётся вручную, поэтому каждая модель единственная в своём роде.",
+  "gender": "Мужские",
+  "mechanism": "Механика",
+  "count": 1,
+  "priceFrom": 2229,
+  "url": null,
+  "preview": "77490694",
+  "banner": "images/banners/damasskaya-stal.jpg",
+  "isNew": true
+ },
+ {
+  "slug": "dreva",
+  "name": "Дрэва",
+  "about": "Часы из прочных пород дерева с японским механизмом: дерево, металл и натуральные материалы.",
+  "gender": "Унисекс",
+  "mechanism": null,
+  "count": 15,
+  "priceFrom": 379,
+  "url": null,
+  "preview": "440150549",
+  "banner": "images/banners/dreva.jpg"
+ },
+ {
+  "slug": "dreva-kvadrat",
+  "name": "Дрэва. Квадрат",
+  "about": "Квадратный корпус из натурального дерева, циферблат с печатью под текстуру листа, деревянный браслет. Механизм Miyota 2315 или Луч 2360М, плоское минеральное стекло.",
+  "gender": "Унисекс",
+  "mechanism": "Кварц",
+  "count": 3,
+  "priceFrom": 519,
+  "url": null,
+  "preview": "440450683",
+  "banner": "images/banners/dreva-kvadrat.jpg",
+  "isNew": true
+ },
+ {
   "slug": "budilniki",
   "name": "Будильники",
   "about": "Небольшие стильные будильники: украшают интерьер, громко звонят и точно идут. Есть серия с видами белорусских городов.",
