@@ -15,3 +15,6 @@
 @media (min-width: 801px) {
   .header-inner { height: 50px; }
 }
+
+/* Форма «Напишите нам»: поле сообщения нельзя растягивать мышкой */
+.contact-form textarea { resize: none; }
